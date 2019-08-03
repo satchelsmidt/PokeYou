@@ -1,19 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="css/text" href="style.css">
-    <title>Document</title>
+    <title>PokeYou</title>
 </head>
+
 <body>
 
-<div>
-    <p id="test-image"></p>
+    <!-- Screen 1 HTML -->
+
+    <!-- Addition of possible Jumbotron to add our TITLE -->
+
+    <!-- Catchy text that brings catches the user's attention-->
+    <div>
+        <h1>POKEYOU</h1>
+    </div>
+    <div>
+        <p id="Catchy">THIS WILL BE SOMETHING CATCHY</p>
+    </div>
+<br>
+<br>
+<br>
+    <!-- Screen 2 HTML -->
+
+    <label for="avatar">Choose a profile picture:</label>
+
+    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+
+    <!-- Adding a submit button -->
+
+    <button type="button">SUBMIT BUTTON HERE</button>
+
+    <!-- Test area for image upload from the AJAX call -->
+    <div id="Image Container">
+    <div>
+        <p id="test-image"></p>
+    </div>
+</div>
+    <!-- Area to add our Pokemon Stats in the form of table-->
+
+    <div id="table container">
+
+    <h2>Basic HTML Table</h2>
+
+    <table style="width:100%">
+        <tr>
+            <th>Pokemon</th>
+            <th>Element</th>
+        </tr>
+        <tr>
+            <td>Charzard</td>
+            <td>Fire</td>
+        </tr>
+        <tr>
+            <td>Blastoise</td>
+            <td>Water</td>
+        </tr>
+        <tr>
+            <td>Pikachu</td>
+            <td>Electric</td>
+        </tr>
+    </table>
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </body>
+
 </html>
