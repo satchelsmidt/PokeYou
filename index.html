@@ -23,71 +23,70 @@
 
 <body>
 
+<!-- Screen 1 HTML -->
 <div class='container'>
-    <!-- Screen 1 HTML -->
     <div class='row'>
-        <!-- TITLE -->
-        <div class='col-6'>
-            <h1>POKEYOU</h1>
-        </div>
-        <!-- Game Instructions -->
-        <div class='col-6'>
-            <p id="Catchy">THIS WILL BE SOMETHING CATCHY</p>
+        <div class="col-12">
+            <img id='gameboy' src="images/Capture.PNG">
         </div>
     </div>
 </div>
-<br>
-<br>
-<br>
-    <!-- Screen 2 HTML -->
 
-    <div id="User-Image-Container">
-    <label for="user-image">Choose a profile picture:</label>
 
-    <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
-    </div>
+<!-- Screen 2 HTML -->
 
-    <br>
-    <br>
 
-    <!-- Adding a submit button -->
-    <div id="Button-Container">
-    <button type="button">SUBMIT BUTTON HERE</button>
-    </div>
+<div class="conatiner" id="screentwo">
+    <div class="row">
+        <!-- Image input card -->
+        <div class="card" id="User-Image-Container" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">Upload your photo below:</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
+            </div>
+            
+            <!-- Adding the image submit button -->
+            <div id="Button-Container">
+                <button type="button">SUBMIT BUTTON HERE</button>
+            </div>
+        </div>
 
-    <!-- Test area for image upload from the AJAX call -->
-    <div id="Test-Image-Container">
-    <div>
-        <p id="test-image"></p>
+        <!-- Pokemon results card -->
+        <div class="card" id="pokecard" style="width: 18rem;">
+                <div class="card-body" id="User-Image-Container">
+                <h5 class="card-title">Pokemon card:</h5>
+                <!-- Display Poke -->
+                <p id="Test-Image-Container test-image"></p>
+                <div id="pokeImage"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div>
+                <!-- Name and Stats display -->
+                    <div id="table-container">
+                            <table style="width:100%">
+                                <tr>
+                                    <th>Pokemon name here!</th>
+                                </tr>
+                                <tr>
+                                    <td>Charzard</td>
+                                    <td>Fire</td>
+                                </tr>
+                                <tr>
+                                    <td>Blastoise</td>
+                                    <td>Water</td>
+                                </tr>
+                                <tr>
+                                    <td>Pikachu</td>
+                                    <td>Electric</td>
+                                </tr>
+                            </table>
+                    </div>
+                </div>
+        </div>
     </div>
 </div>
-    <!-- Area to add our Pokemon Stats in the form of table-->
 
-    <div id="table-container">
 
-    <h2>Basic HTML Table</h2>
-
-    <table style="width:100%">
-        <tr>
-            <th>Pokemon</th>
-            <th>Element</th>
-        </tr>
-        <tr>
-            <td>Charzard</td>
-            <td>Fire</td>
-        </tr>
-        <tr>
-            <td>Blastoise</td>
-            <td>Water</td>
-        </tr>
-        <tr>
-            <td>Pikachu</td>
-            <td>Electric</td>
-        </tr>
-    </table>
-</div>
-
-    <div id="pokeImage"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
