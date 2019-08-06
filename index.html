@@ -5,113 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <title>PokeYou</title>
 
     <!-- CSS Reset -->
     <link href="reset.css" rel="stylesheet">
 
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <!-- AOS CDN -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 </head>
 
 <body>
 
     <!-- Screen 1 HTML -->
-
-    <!-- Addition of possible Jumbotron to add our TITLE -->
-
-    <!-- Catchy text that brings catches the user's attention-->
-    <div>
-        <h1>POKEYOU</h1>
+    <div class='container'>
+        <div class='row'>
+            <div class="col-12">
+                <img id='gameboy' src="images/Capture.PNG">
+            </div>
+        </div>
     </div>
-    <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-    <div>
-        <p id="Catchy">THIS WILL BE SOMETHING CATCHY</p>
-    </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
     <!-- Screen 2 HTML -->
 
-    <div id="User-Image-Container">
-    <label for="user-image">Choose a profile picture:</label>
-    <br>
-    <br>
-    <br>
-    <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-    <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
+
+    <div class="conatiner" id="screentwo">
+        <div class="row">
+            <!-- Image input card -->
+            <div class="card col-4" id="User-Image-Container" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Upload your photo below:</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
+                </div>
+
+                <!-- Adding the image submit button -->
+                <div id="Button-Container">
+                    <!-- ADDED ID FOR SUBMIT BUTTON -->
+                    <button type="button" id="submitButton">SUBMIT BUTTON HERE</button>
+                </div>
+            </div>
+
+            <!-- Pokemon results card -->
+            <div class="card col-4" id="pokecard" style="width: 18rem;">
+                <div class="card-body" id="User-Image-Container">
+                    <h5 class="card-title">Pokemon card:</h5>
+                    <!-- Display Poke -->
+                    <p id="Test-Image-Container test-image"></p>
+                    <div id="pokeImage"><img
+                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div>
+                    <!-- Name and Stats display -->
+                    <div id="table-container">
+                        <table style="width:100%">
+                            <tr>
+                                <th>Pokemon name here!</th>
+                            </tr>
+                            <tr>
+                                <td>Charzard</td>
+                                <td>Fire</td>
+                            </tr>
+                            <tr>
+                                <td>Blastoise</td>
+                                <td>Water</td>
+                            </tr>
+                            <tr>
+                                <td>Pikachu</td>
+                                <td>Electric</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <br>
-    <br>
-    <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-    <!-- Adding a submit button -->
-    <div id="Button-Container">
-    <button type="button">SUBMIT BUTTON HERE</button>
-    </div>
 
     <!-- Test area for image upload from the AJAX call -->
     <div id="Test-Image-Container">
