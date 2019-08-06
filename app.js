@@ -52,3 +52,9 @@ function fetchPokemon(){
 
 fetchPokemon();
 });
+
+  // below listed default settings
+  AOS.init({
+    duration: 2400, 
+  
+  });

@@ -1,0 +1,13 @@
+body {
+    background-image: url("images/background.png");
+}
+
+.item {
+    width: 800px;
+    height: 600px;
+    background-color: grey;
+    margin: 50px auto;
+    padding-top: 70px;
+    font-size: 3em;
+    text-align: center;
+}
