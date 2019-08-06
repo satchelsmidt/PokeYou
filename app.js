@@ -1,9 +1,14 @@
 
+
+//this variable will hold the output of the faceAPI call 
+//this will be a list of key/value pairs related to emotions and % of emotion detected 
+//delcared here so other functions can access
+var faceEmotions = {};
+
 //This function is essentially what runs when the user hits their submit button to upload their image
 
 //Initialize function when user clicks the submit button
 $("#submitButton").on("click", function () {
-
     //Defining count variable to iterate through ajax calls while avoiding use of for loop (due to asynchronous-ness)
     var count = 1;
 
@@ -37,7 +42,7 @@ $("#submitButton").on("click", function () {
                 // console.log(response1.height)
                 // console.log(response1.weight)
                 // console.log(response1.sprites.front_default)
-                console.log(pokemonAvailable)
+                console.log(pokemonAvailable);
 
                 if (count < 50) {
                     count = count + 1;
@@ -61,17 +66,37 @@ $("#submitButton").on("click", function () {
     fetchPokemon();
 });
 
+
+/*=============================================
+=User image upload (POST) and faceAPI call (POST)=
+=============================================*/
 $(document).ready(function () {
+    //Cloudinary is the image hosting service
+    //variable that holds the link provided by the site and uses the 'upload' method
+    //cloudinary upload API url 
     var CLOUNDINARY_URL = 'https://api.cloudinary.com/v1_1/da35qrt1i/upload';
+    //unique id link to our cloudinary account 
     var CLOUNDINARY_UPLOAD_PRESET = 'zqc6zawb';
+    //Executes after the user has chosen a file to open 
+    //detects "change"
+
+
+
+
     $("#user-image").change(function (e) {
-        // var uploadFile;
-        // e.preventDefault();
+
+        //variable that stores the file the user uploaded
         var uploadFile = e.target.files[0];
-        // console.log(uploadFile);
+        //formData provides a way to easily construct a set of key/value pairs representing form fields and their values
         var formData = new FormData();
+        //appends a new key/value pair representing the file to upload to the cloud
         formData.append('file', uploadFile);
+        //appends a new key/value pair repretenting the unique id link to our cloudinary account 
         formData.append('upload_preset', CLOUNDINARY_UPLOAD_PRESET);
+        // Promise based HTTP client for the browser and node.js
+        //similar to ajax
+        //asynchronous POST which reurns a promise
+        //this method is used to upload the user image to the cloud and return the link to the image
         axios({
             url: CLOUNDINARY_URL,
             method: 'POST',
@@ -79,34 +104,42 @@ $(document).ready(function () {
                 'Content-Type': 'applications/x-www-form-urlencoded'
             },
             data: formData
-        }).then(function (res) {
+        })
+            //a method from the Promise library that promises to execute a callback function. The callback => is going to capture the data that comes back from our AJAX call
+            .then(function (res) {
 
-            uploadedImgLink = res.data.url;
-            // console.log(res.data.url);
+                //variable that stores the url leading to the user image that was uploaded to the cloud 
+                uploadedImgLink = res.data.url;
+                //this variable holds the Face API url
+                faceURL = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=emotion&recognitionModel=recognition_01&detectionModel=detection_01"
 
-            //face api call 
-            faceURL = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=emotion&recognitionModel=recognition_01&detectionModel=detection_01"
-
-            axios({
-                url: faceURL,
-                method: 'POST',
-                headers: {
-                    'Host': 'westcentralus.api.cognitive.microsoft.com',
-                    'Content-Type': 'application/json',
-                    'Ocp-Apim-Subscription-Key': '42bfc0fb6f98403fa3df091c5f1a4b15'
-                },
-                data: {
-                    'url': uploadedImgLink
-                }
-            }).then(function (res2) {
-
-                faceEmotions = res2.data[0].faceAttributes.emotion;
-                // console.log(res2.data[0].faceAttributes.emotion);
-            }).catch(function (err2) {
-                console.error(err2);
+                //this method is used to POST to the the Face API 
+                //this will use the FaceAPI to analyze the user image after it has been uploaded to the cloud 
+                axios({
+                    url: faceURL,
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Ocp-Apim-Subscription-Key': '42bfc0fb6f98403fa3df091c5f1a4b15'
+                    },
+                    data: {
+                        'url': uploadedImgLink
+                    }
+                })
+                    //will caputue the promise returned by the POST
+                    .then(function (res2) {
+                        //variable that stores the faceAttributes object spit out from the FaceAPI POST call
+                        //example: "faceAttributes": { "emotion": { "anger": 0.0, "contempt": 0.0, "disgust": 0.0, "fear": 0.015, "happiness": 0.219, "neutral": 0.0, "sadness": 0.0, "surprise": 0.766 } }
+                        faceEmotions = res2.data[0].faceAttributes.emotion;
+                    })
+                    //returns a Promise and deals with rejected cases 
+                    .catch(function (err2) {
+                        console.error(err2);
+                    })
             })
-        }).catch(function (err) {
-            console.error(err);
-        });
+            .catch(function (err) {
+                console.error(err);
+            });
+
     });
 });
