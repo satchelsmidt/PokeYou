@@ -80,7 +80,31 @@ $(document).ready(function () {
             },
             data: formData
         }).then(function (res) {
-            console.log(res.data.url);
+
+            uploadedImgLink = res.data.url;
+            // console.log(res.data.url);
+
+            //face api call 
+            faceURL = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=emotion&recognitionModel=recognition_01&detectionModel=detection_01"
+
+            axios({
+                url: faceURL,
+                method: 'POST',
+                headers: {
+                    'Host': 'westcentralus.api.cognitive.microsoft.com',
+                    'Content-Type': 'application/json',
+                    'Ocp-Apim-Subscription-Key': '42bfc0fb6f98403fa3df091c5f1a4b15'
+                },
+                data: {
+                    'url': uploadedImgLink
+                }
+            }).then(function (res2) {
+
+                faceEmotions = res2.data[0].faceAttributes.emotion;
+                // console.log(res2.data[0].faceAttributes.emotion);
+            }).catch(function (err2) {
+                console.error(err2);
+            })
         }).catch(function (err) {
             console.error(err);
         });
