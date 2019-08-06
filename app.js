@@ -1,3 +1,14 @@
+
+=======
+// ====================== INTRO SCREEN ========================
+
+
+
+
+// ====================== END OF INTRO SCREEN ========================
+
+
+
 //This function is essentially what runs when the user hits their submit button to upload their image
 
 //Initialize function when user clicks the submit button
