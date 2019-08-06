@@ -2,11 +2,13 @@
 
 // global variable to have instructions hide on page load
 
-$(document).ready(function() {
-    $("#instructions").hide();
-})
-    // onclick function for when the user clicks the image
-    $("#gameboy").on("click", function() {
+    $(document).ready(function() {
+        $("#instructions").hide();
+    })
+
+// onclick function for when the user clicks the image
+    
+    $("#akey").on("click", function() {
 
         // hide the intro text div
         $("#introtext").hide();
@@ -16,6 +18,20 @@ $(document).ready(function() {
         $("#instructions").show();
 
     })
+
+// onclick function for when the user clicks the down arrow
+
+    // $("#downkey").on("click", function() {
+
+    //     // scroll to bottom of the second screen
+    //     $("#screentwo").scrollIntoView();
+
+    // })
+
+    $("#downkey").click(function() {
+        $("html, body").animate({ scrollTop: $(document).height() }, 1600);
+        return false;
+      });
 
 
 

@@ -47,6 +47,28 @@ p {
     text-align: center;
 }
 
+#akey {
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    top: 610px;
+    left: 965px;
+}
+
+#downkey {
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    top: 700px;
+    left: 512px;
+}
+
 #screentwo {
     margin-bottom: 25%;
     margin-left: 10%;
