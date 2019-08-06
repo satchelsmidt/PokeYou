@@ -41,6 +41,12 @@
                 <h1>PokeYou!</h1>
                 <p>Click "A" to get started...</p>                
             </div>
+            <div class="col font" id="instructions">
+                <p>My name is Profressor Oak! Instruction text here blah blah blah<br>
+                Press the down arrow</p>                
+            </div>
+            <div class="col" id="akey"></div>
+            <div class="col" id="downkey"></div>
         </div>
 </div>
 
@@ -58,6 +64,9 @@
                     <p class="card-text">Have the picture render here.</p>
                     <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
                 </div>
+
+
+                
 
                 <!-- Adding the image submit button -->
                 <div id="Button-Container">
@@ -103,6 +112,8 @@
     <!-- <div id="pokeImage"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Promise based HTTP client for the browser and node.js -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
 
     
