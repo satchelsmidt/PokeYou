@@ -1,17 +1,4 @@
 body {
-<<<<<<< HEAD
-    background-image: url("images/background.png");
-}
-
-.item {
-    width: 800px;
-    height: 600px;
-    background-color: grey;
-    margin: 50px auto;
-    padding-top: 70px;
-    font-size: 3em;
-    text-align: center;
-=======
     background-image: url(images/dark-honeycomb/dark-honeycomb.png);
     margin: 0 auto;
 }
@@ -37,5 +24,8 @@ body {
     float: right;
     margin-left: 30%;
 
->>>>>>> 3e7ecd35785ca9ae8e943b873a81d36308553d09
+}
+
+.containertwo {
+    background-color: blue;
 }
