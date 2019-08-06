@@ -1,3 +1,10 @@
+// ====================== INTRO SCREEN ========================
+
+
+
+
+// ====================== END OF INTRO SCREEN ========================
+
 
 //This function is essentially what runs when the user hits their submit button to upload their image
 
@@ -61,8 +68,8 @@ function fetchPokemon(){
 fetchPokemon();
 });
 
-  // below listed default settings
+  // below is the method to initiate and call on the AOS library
   AOS.init({
-    duration: 2400, 
+    duration: 3000, 
   
   });
