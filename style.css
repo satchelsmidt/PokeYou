@@ -3,16 +3,39 @@ body {
     margin: 0 auto;
 }
 
+.font {
+    font-family: 'Press Start 2P', cursive;
+}
+
 #intro {
     margin-left: 15%;
     margin-top: 1%;
     margin-bottom: 30%;
+    
 }
 
 #gameboy {
     height: 800px;
     width: 790px;
     border-radius: 30px;
+    position: relative;
+}
+
+#introtext {
+    color: black;
+    position: absolute;
+    width: 28%;
+    top: 160px;
+    right: 516px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+p {
+    margin-top: 25px;
 }
 
 #screentwo {
