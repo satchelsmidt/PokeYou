@@ -6,14 +6,11 @@
 // ====================== END OF INTRO SCREEN ========================
 
 
-<<<<<<< HEAD
-=======
 //this variable will hold the output of the faceAPI call 
 //this will be a list of key/value pairs related to emotions and % of emotion detected 
 //delcared here so other functions can access
 var faceEmotions = {};
 
->>>>>>> b00ec769db056749a9de79cdb34da5c87f0b39bc
 //This function is essentially what runs when the user hits their submit button to upload their image
 
 //Initialize function when user clicks the submit button
