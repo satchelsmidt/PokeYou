@@ -38,6 +38,15 @@ p {
     margin-top: 25px;
 }
 
+#instructions {
+    color: black;
+    position: absolute;
+    width: 28%;
+    top: 160px;
+    right: 516px;
+    text-align: center;
+}
+
 #screentwo {
     margin-bottom: 25%;
     margin-left: 10%;

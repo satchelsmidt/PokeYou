@@ -1,5 +1,21 @@
 // ====================== INTRO SCREEN ========================
 
+// global variable to have instructions hide on page load
+
+$(document).ready(function() {
+    $("#instructions").hide();
+})
+    // onclick function for when the user clicks the image
+    $("#gameboy").on("click", function() {
+
+        // hide the intro text div
+        $("#introtext").hide();
+
+
+        // display instructions div
+        $("#instructions").show();
+
+    })
 
 
 
