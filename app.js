@@ -2,30 +2,30 @@
 
 // global variable to have instructions hide on page load
 
-    $(document).ready(function() {
-        $("#instructions").hide();
-    })
+$(document).ready(function () {
+    $("#instructions").hide();
+})
 
 // onclick function for when the user clicks the image
-    
-    $("#akey").on("click", function() {
 
-        // hide the intro text div
-        $("#introtext").hide();
+$("#akey").on("click", function () {
+
+    // hide the intro text div
+    $("#introtext").hide();
 
 
-        // display instructions div
-        $("#instructions").show();
+    // display instructions div
+    $("#instructions").show();
 
-    })
+})
 
 // onclick function for when the user clicks the down arrow
 
 
-    $("#downkey").click(function() {
-        $("html, body").animate({ scrollTop: $(document).height() }, 1600);
-        return false;
-      });
+$("#downkey").click(function () {
+    $("html, body").animate({ scrollTop: $(document).height() }, 1600);
+    return false;
+});
 
 
 
@@ -34,8 +34,7 @@
 
 //this variable will hold the output of the faceAPI call 
 //this will be a list of key/value pairs related to emotions and % of emotion detected 
-//delcared here so other functions can access
-var faceEmotions = {};
+var highestEmotion = "";
 
 //This function is essentially what runs when the user hits their submit button to upload their image
 
@@ -105,8 +104,8 @@ $("#submitButton").on("click", function () {
             // .then() => is a method from the Promise library that promises to execute a callback function. The callback => is going to capture the data that comes back from our AJAX call
             .then(function (response1) {
 
-                console.log("response1", response1)
-                console.log("POKEMON ID NUMBER", response1.id)
+                // console.log("response1", response1)
+                // console.log("POKEMON ID NUMBER", response1.id)
 
                 if (angryPoke.includes(response1.id)) {
                     angryPokeDeets.push(response1)
@@ -133,14 +132,14 @@ $("#submitButton").on("click", function () {
                     surprisePokeDeets.push(response1)
                 }
 
-                console.log("ARRAY OF ANGRY POKES", angryPokeDeets);
-                console.log("ARRAY OF CONTEMPT POKES", contemptPokeDeets);
-                console.log("ARRAY OF DISGUST POKES", disgustPokeDeets);
-                console.log("ARRAY OF FEAR POKES", fearPokeDeets);
-                console.log("ARRAY OF HAPPPY POKES", happyPokeDeets);
-                console.log("ARRAY OF NEUTRAL POKES", neutralPokeDeets);
-                console.log("ARRAY OF SAD POKES", sadPokeDeets);
-                console.log("ARRAY OF SURPRISE POKES", surprisePokeDeets);
+                // console.log("ARRAY OF ANGRY POKES", angryPokeDeets);
+                // console.log("ARRAY OF CONTEMPT POKES", contemptPokeDeets);
+                // console.log("ARRAY OF DISGUST POKES", disgustPokeDeets);
+                // console.log("ARRAY OF FEAR POKES", fearPokeDeets);
+                // console.log("ARRAY OF HAPPPY POKES", happyPokeDeets);
+                // console.log("ARRAY OF NEUTRAL POKES", neutralPokeDeets);
+                // console.log("ARRAY OF SAD POKES", sadPokeDeets);
+                // console.log("ARRAY OF SURPRISE POKES", surprisePokeDeets);
 
                 // OLD CODE ////////////////////////////////////
                 // //For each ajax call run, push the resulting details to our array outside of ajax
@@ -159,7 +158,7 @@ $("#submitButton").on("click", function () {
                 //Loop through number of pokemon that we want to have in our sample (bypasses for loop so that each call is fully executed before next one is run)
                 if (count < 50) {
                     count = count + 1;
-                    console.log('GRAND TOTAL:', count);
+                    // console.log('GRAND TOTAL:', count);
                     fetchPokemon();
                 }
             })
@@ -238,7 +237,23 @@ $(document).ready(function () {
                     .then(function (res2) {
                         //variable that stores the faceAttributes object spit out from the FaceAPI POST call
                         //example: "faceAttributes": { "emotion": { "anger": 0.0, "contempt": 0.0, "disgust": 0.0, "fear": 0.015, "happiness": 0.219, "neutral": 0.0, "sadness": 0.0, "surprise": 0.766 } }
-                        faceEmotions = res2.data[0].faceAttributes.emotion;
+                        let faceEmotions = res2.data[0].faceAttributes.emotion;
+                        //this will turn the faceEmoitons object in to an array of the key value pairs (array = [key,value])
+                        let emotionValues = Object.entries(faceEmotions);
+                        //temp store the value of the highest emotion value (0 to 1) for the loop below
+                        var count = 0;
+                        //iterate through each k,v pair and find the highest value; assign the string descriptor for the highest value to a variable 
+                        for (let i = 0; i < emotionValues.length - 1; i++) {
+                            //if the value of the emotion is greater than the next highest
+                            if (emotionValues[i][1] > count) {
+                                //assign that value as the highest 
+                                count = emotionValues[i][1];
+                                //assign the string descriptor for the highest value to a variable
+                                highestEmotion = emotionValues[i][0];
+                            }
+                        }
+                        console.log(highestEmotion);
+
                     })
                     //returns a Promise and deals with rejected cases 
                     .catch(function (err2) {
