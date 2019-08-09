@@ -31,6 +31,14 @@ $("#downkey").click(function () {
 
 // ====================== END OF INTRO SCREEN ========================
 
+// ========= Method to call on the AOS library for card animation=======================
+
+AOS.init({
+    duration: 3000,
+    delay: 1000,
+  });
+
+  // ========= End of Method to call on the AOS library for card animation=======================
 
 //this variable will hold the output of the faceAPI call 
 //this will be a list of key/value pairs related to emotions and % of emotion detected 
@@ -266,3 +274,4 @@ $(document).ready(function () {
 
     });
 });
+
