@@ -44,6 +44,19 @@ AOS.init({
 //this will be a list of key/value pairs related to emotions and % of emotion detected 
 var highestEmotion = "";
 
+//Poke Array Object 
+// var pokemonEmotions = {
+//     anger: [3, 14, 15, 18, 20, 24, 28, 29, 33, 34, 55, 56, 57, 62, 64, 65, 76, 83, 85, 100, 105, 106, 107, 115, 117, 123, 125, 127, 130, 145],
+//     contempt: [2, 5, 6, 7, 8, 9, 17, 38, 45, 53, 58, 59, 67, 73, 91, 96, 97, 99, 102, 126, 128, 131, 133, 134, 135, 146, 150],
+//     disgust: [12, 16, 68, 74, 78, 88, 89, 95, 108, 109, 110],
+//     happy: [1, 4, 25, 26, 35, 36, 39, 40, 43, 61, 66, 87, 103, 113, 122, 149],
+//     neutral: [10, 13, 46, 49, 50, 51, 71, 77, 79, 81, 82, 84, 98, 111, 116, 120, 121, 129, 132, 137, 138, 140, 141, 143, 147, 148],
+//     sad: [11, 30, 44, 60, 63, 104],
+//     surprise: [21, 23, 31, 37, 46, 54, 69, 70, 80, 86, 90, 112, 118, 136, 144]
+// }
+
+// console.log(pokemonEmotions[highestEmotion]);
+
 //This function is essentially what runs when the user hits their submit button to upload their image
 
 //Initialize function when user clicks the submit button
@@ -261,7 +274,40 @@ $(document).ready(function () {
                             }
                         }
                         console.log(highestEmotion);
+                        //object containing the arrays of pokemon and associated emoitons
+                        var pokemonEmotions = {
+                            anger: [3, 14, 15, 18, 20, 24, 28, 29, 33, 34, 55, 56, 57, 62, 64, 65, 76, 83, 85, 100, 105, 106, 107, 115, 117, 123, 125, 127, 130, 145],
+                            contempt: [2, 5, 6, 7, 8, 9, 17, 38, 45, 53, 58, 59, 67, 73, 91, 96, 97, 99, 102, 126, 128, 131, 133, 134, 135, 146, 150],
+                            disgust: [12, 16, 68, 74, 78, 88, 89, 95, 108, 109, 110],
+                            happy: [1, 4, 25, 26, 35, 36, 39, 40, 43, 61, 66, 87, 103, 113, 122, 149],
+                            neutral: [10, 13, 46, 49, 50, 51, 71, 77, 79, 81, 82, 84, 98, 111, 116, 120, 121, 129, 132, 137, 138, 140, 141, 143, 147, 148],
+                            sad: [11, 30, 44, 60, 63, 104],
+                            surprise: [21, 23, 31, 37, 46, 54, 69, 70, 80, 86, 90, 112, 118, 136, 144]
+                        }
 
+                        //this variable will hold the array related to the pokemon with the assocted with the highest valued emotion
+                        var choosenArray = pokemonEmotions[highestEmotion];
+
+                        //generate a random number based on the length of the pokeArray related to the highest valued emotion
+                        var randomNumber = Math.floor(Math.random() * choosenArray.length)
+
+                        //should be a random number from the array 
+                        var choosenPokemon = choosenArray[randomNumber];
+
+                        
+                        var queryURL1 = "https://pokeapi.co/api/v2/pokemon/" + choosenPokemon + "/"
+                        //async call to the pokemonAPI
+                        //should return just one pokemon 
+                        //store relevaent imformation with future variables 
+                        $.ajax({
+                            url: queryURL1,
+                            method: 'GET'
+                        }).then(function (res3) {
+                            console.log(res3.name);
+
+                        }).catch(function (err3) {
+                            console.error(err3);
+                        })
                     })
                     //returns a Promise and deals with rejected cases 
                     .catch(function (err2) {
