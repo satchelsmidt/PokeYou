@@ -104,22 +104,22 @@ p {
     }
 
     #akey {
-        height: 115px;
-        width: 116px;
-        top: 743px;
-        right: 75px;
+        height: 60px;
+        width: 64px;
+        top: 48%;
+        right: 8%;
     }
     
     #downkey {
-        height: 95px;
-        width: 105px;
-        top: 830px;
-        right: 500px;
+        height: 53px;
+        width: 91px;
+        top: 53%;
+        right: 60%;
     }
 
     #instructions {
-        top: 220px;
-        right: 190px;
+        top: 22%;
+        right: 19%;
     }
 
     .screentwo {
@@ -142,49 +142,51 @@ p {
 }
 
 
- /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
+ /* Mobile L */
+@media (min-width: 425px) { 
 
     #gameboy {
         margin-top: 7%;
     }
-    
-    h1 {
-        font-size: 62px;
-    }
+
     
     #introtext {
         color: black;
         position: absolute;
-        width: 50%;
-        top: 298px;
-        right: 242px;
+        width: 52%;
+        top: 17%;
+        right: 25%;
         text-align: center;
     }
 
+    h1 {
+        font-size: 27px;
+    }
+
     p {
-        margin-top: 20px;
-        font-size: 22px;
+        margin-top: 8%;
+        font-size: 9px;
     }
 
     #instructions {
-        top: 285px;
-        right: 246px;
+        top: 25%;
+        right: 21%;
+        width: 64%
     }
 
     #akey {
-        height: 143px;
-        width: 179px;
-        top: 1012px;
-        right: 83px;
+        height: 80px;
+        width: 83px;
+        top: 54%;
+        right: 6%;
 
     }
     
     #downkey {
-        height: 110px;
-        width: 116px;
-        top: 1126px;
-        right: 681px;
+        height: 61px;
+        width: 107px;
+        top: 61%;
+        right: 60%;
     }
 
     .screentwo {
@@ -195,24 +197,19 @@ p {
     
     #upload {
         margin-top: 35%;
-        margin-left: 20%;
+        margin-left: 15%;
     }
 
-    #User-Image-Container {
-        height: 400px;
-    }
-    
     #results {
         margin-top: 18%;
         margin-bottom: 27%;
-        margin-left: 20%;
-        height: 400px;
+        margin-left: 15%;
     }
 
  }
 
- /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { 
+ /* Tablet */
+@media (min-width: 768px) { 
 
 
     #gameboy {
