@@ -48,7 +48,16 @@ $("#submitButton").on("click", function () {
     // var pokemonAvailable = []
 
     //Angry Poke
-    var angryPoke = [3, 14, 15, 18, 20, 24, 28, 29, 33, 34, 55, 56, 57, 62, 64, 65, 76, 83, 85, 100, 105, 106, 107, 115, 117, 123, 125, 127, 130, 145];
+
+
+    var angryPoke = [3, 14, 15, 18, 20, 24, 28, 29, 33, 34, 55, 56, 57, 62, 64, 65, 76, 83, 85, 100, 105, 106, 107, 
+    115, 117, 123, 125, 127, 130, 145];
+    
+    
+    randomAngry = angryPoke[Math.floor(Math.random() * angryPoke.length)];
+
+    console.log("TEST",randomAngry)
+    
     var angryPokeDeets = [];
 
     //Contempt Poke
@@ -176,6 +185,10 @@ $("#submitButton").on("click", function () {
 
     fetchPokemon();
 });
+
+
+
+
 
 /*=============================================
 =User image upload (POST) and faceAPI call (POST)=
