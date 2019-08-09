@@ -107,3 +107,12 @@ h4, h5, h6 {
 .cardOne {
     background: linear-gradient(red, white);
 }
+
+#userImage{
+
+    width: 200px;
+}
+
+#pokeImageReal{
+    width: 200px; 
+}
