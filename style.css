@@ -82,3 +82,28 @@ p {
 #pokecard {
     float: right;
     margin-left: 30%;
+}
+
+h4, h5, h6 {
+    text-align: center;
+}
+
+#Button-Container {
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+}
+
+.card-text {
+    text-align: center;
+}
+
+#pokeImage {
+    display: block;
+    margin: auto;
+    width: 30%;
+}
+
+.cardOne {
+    background: linear-gradient(red, white);
+}
