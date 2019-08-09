@@ -84,7 +84,7 @@ p {
     margin-left: 30%;
 }
 
-h5, h6 {
+h4, h5, h6 {
     text-align: center;
 }
 
@@ -102,4 +102,8 @@ h5, h6 {
     display: block;
     margin: auto;
     width: 30%;
+}
+
+.cardOne {
+    background: linear-gradient(red, white);
 }
