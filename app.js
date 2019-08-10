@@ -40,6 +40,23 @@ AOS.init({
 //this variable will hold the output of the faceAPI call 
 //this will be a list of key/value pairs related to emotions and % of emotion detected 
 var highestEmotion = "";
+//object containing the arrays of pokemon and associated emoitons
+var pokemonEmotions = {
+    anger: [3, 14, 15, 18, 20, 24, 28, 29, 33, 34, 55, 56, 57, 62, 64, 65, 76, 83, 85, 100, 105, 106, 107, 115, 117, 123, 125, 127, 130, 145],
+    contempt: [2, 5, 6, 7, 8, 9, 17, 38, 45, 53, 58, 59, 67, 73, 91, 96, 97, 99, 102, 126, 128, 131, 133, 134, 135, 146, 150],
+    disgust: [12, 16, 68, 74, 78, 88, 89, 95, 108, 109, 110],
+    happiness: [1, 4, 25, 26, 35, 36, 39, 40, 43, 61, 66, 87, 103, 113, 122, 149],
+    neutral: [10, 13, 46, 49, 50, 51, 71, 77, 79, 81, 82, 84, 98, 111, 116, 120, 121, 129, 132, 137, 138, 140, 141, 143, 147, 148],
+    sadness: [11, 30, 44, 60, 63, 104],
+    surprise: [21, 23, 31, 37, 46, 54, 69, 70, 80, 86, 90, 112, 118, 136, 144]
+}
+//want to display the top 5 pokemon that poeople are getting
+//this object will hold the count for each pokemon that get generated 
+//try creating an object equal to the pokemon and then giving that k/v equal to the count and the link to the sprite 
+let pokeTotals = {};
+//add object {name:v,link:v}
+let pokeTotalsArray = [];
+
 
 //Define pokemon features that we want to return after call (globally)
 var pokemonName;
@@ -48,6 +65,7 @@ var pokemonType;
 var pokemonAbility;
 var pokemonMoveOne;
 var pokemonMoveTwo;
+
 
 /*=============================================
 =User image upload (POST) and faceAPI call (POST)=
@@ -130,25 +148,19 @@ $(document).ready(function () {
                             }
                         }
                         console.log(highestEmotion);
-                        //object containing the arrays of pokemon and associated emoitons
-                        var pokemonEmotions = {
-                            anger: [3, 14, 15, 18, 20, 24, 28, 29, 33, 34, 55, 56, 57, 62, 64, 65, 76, 83, 85, 100, 105, 106, 107, 115, 117, 123, 125, 127, 130, 145],
-                            contempt: [2, 5, 6, 7, 8, 9, 17, 38, 45, 53, 58, 59, 67, 73, 91, 96, 97, 99, 102, 126, 128, 131, 133, 134, 135, 146, 150],
-                            disgust: [12, 16, 68, 74, 78, 88, 89, 95, 108, 109, 110],
-                            happiness: [1, 4, 25, 26, 35, 36, 39, 40, 43, 61, 66, 87, 103, 113, 122, 149],
-                            neutral: [10, 13, 46, 49, 50, 51, 71, 77, 79, 81, 82, 84, 98, 111, 116, 120, 121, 129, 132, 137, 138, 140, 141, 143, 147, 148],
-                            sadness: [11, 30, 44, 60, 63, 104],
-                            surprise: [21, 23, 31, 37, 46, 54, 69, 70, 80, 86, 90, 112, 118, 136, 144]
-                        }
+
 
                         //this variable will hold the array related to the pokemon with the assocted with the highest valued emotion
                         var choosenArray = pokemonEmotions[highestEmotion];
 
+
                         //generate a random number based on the length of the pokeArray related to the highest valued emotion
-                        var randomNumber = Math.floor(Math.random() * choosenArray.length)
+                        var randomNumber = Math.floor(Math.random() * choosenArray.length);
+
 
                         //should be a random number from the array 
                         var choosenPokemon = choosenArray[randomNumber];
+
 
                         var queryURL1 = "https://pokeapi.co/api/v2/pokemon/" + choosenPokemon + "/"
                         //async call to the pokemonAPI
@@ -159,6 +171,38 @@ $(document).ready(function () {
                             method: 'GET'
                         }).then(function (res3) {
                             //Return pokemon name
+
+                            let isThere = false;
+                            //iterate through the pokeTotals array 
+                            //check to see if the pokemon is in the array and add to the count if so and cset isThere to true so that a duplicate is not added after the loop ends 
+                            for (let i = 0; i < pokeTotalsArray.length - 1; i++) {
+                                if (isThere === false) {
+                                    if (pokeTotalsArray[i].name === res3.name) {
+                                        isThere = true;
+                                        pokeTotalsArray[i].count = pokeTotalsArray[i].count+1;
+                                    }
+                                }
+                            }
+                            //creates a new pokemon object to keep count and grab the link to the sprite 
+                            if (isThere === false) {
+                                let countedPokemon = {
+                                    name: res3.name,
+                                    link: res3.sprites.front_default,
+                                    count: 1
+                                }
+                                pokeTotalsArray.push(countedPokemon);
+                            }
+
+                            console.log(pokeTotalsArray);
+
+
+
+
+                            //set the meta tag which represents the image when shared to facebook
+                            $("#facebook-img").attr("content", res3.sprites.front_default);
+                            $("#twitter-link").attr("data-url", res3.sprites.front_default);
+
+                        }).catch(function (err3) {
 
                             pokemonName = res3.name
                             console.log(pokemonName);
@@ -181,7 +225,10 @@ $(document).ready(function () {
 
                             pokemonMoveTwo = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
                             console.log(pokemonMoveTwo);
+                          
+                            console.error(err2);
                         }).catch(function (err3) { //Error catching ////////////////////////////////////
+
                             console.error(err3);
                         })
                     })
