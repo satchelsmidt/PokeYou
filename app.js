@@ -157,14 +157,11 @@ $(document).ready(function () {
                         //this variable will hold the array related to the pokemon with the assocted with the highest valued emotion
                         var choosenArray = pokemonEmotions[highestEmotion];
 
-
                         //generate a random number based on the length of the pokeArray related to the highest valued emotion
                         var randomNumber = Math.floor(Math.random() * choosenArray.length);
 
-
                         //should be a random number from the array 
                         var choosenPokemon = choosenArray[randomNumber];
-
 
                         var queryURL1 = "https://pokeapi.co/api/v2/pokemon/" + choosenPokemon + "/"
                         //async call to the pokemonAPI
@@ -175,6 +172,28 @@ $(document).ready(function () {
                             method: 'GET'
                         }).then(function (res3) {
                             //Return pokemon name
+
+                            pokemonName = res3.name
+                            console.log(pokemonName);
+                            //return pokemon image
+
+                            pokemonImage = res3.sprites.front_default
+                            console.log(pokemonImage);
+                            //return random pokemon ability
+
+                            pokemonAbility = res3.abilities[Math.floor(Math.random() * res3.abilities.length)].ability.name
+                            console.log(pokemonAbility);
+                            //Return pokemon type (only one, if two types)
+
+                            pokemonType = res3.types[Math.floor(Math.random() * res3.types.length)].type.name
+                            console.log(pokemonType);
+                            //return two random pokemon moves
+
+                            pokemonMoveOne = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
+                            console.log(pokemonMoveOne);
+
+                            pokemonMoveTwo = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
+                            console.log(pokemonMoveTwo);
 
                             let isThere = false;
                             //iterate through the pokeTotals array 
@@ -199,36 +218,11 @@ $(document).ready(function () {
 
                             console.log(pokeTotalsArray);
 
-
-
-
                             //set the meta tag which represents the image when shared to facebook
                             $("#facebook-img").attr("content", res3.sprites.front_default);
                             $("#twitter-link").attr("data-url", res3.sprites.front_default);
 
                         }).catch(function (err3) {
-
-                            pokemonName = res3.name
-                            console.log(pokemonName);
-                            //return pokemon image
-
-                            pokemonImage = res3.sprites.front_default
-                            console.log(pokemonImage);
-                            //return random pokemon ability
-
-                            pokemonAbility = res3.abilities[Math.floor(Math.random() * res3.abilities.length)].ability.name
-                            console.log(pokemonAbility);
-                            //Return pokemon type (only one, if two types)
-
-                            pokemonType = res3.types[Math.floor(Math.random() * res3.types.length)].type.name
-                            console.log(pokemonType);
-                            //return two random pokemon moves
-
-                            pokemonMoveOne = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
-                            console.log(pokemonMoveOne);
-
-                            pokemonMoveTwo = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
-                            console.log(pokemonMoveTwo);
                           
                             console.error(err2);
                         }).catch(function (err3) { //Error catching ////////////////////////////////////
