@@ -203,28 +203,6 @@ $(document).ready(function () {
                             $("#twitter-link").attr("data-url", res3.sprites.front_default);
 
                         }).catch(function (err3) {
-
-                            pokemonName = res3.name
-                            console.log(pokemonName);
-                            //return pokemon image
-
-                            pokemonImage = res3.sprites.front_default
-                            console.log(pokemonImage);
-                            //return random pokemon ability
-
-                            pokemonAbility = res3.abilities[Math.floor(Math.random() * res3.abilities.length)].ability.name
-                            console.log(pokemonAbility);
-                            //Return pokemon type (only one, if two types)
-
-                            pokemonType = res3.types[Math.floor(Math.random() * res3.types.length)].type.name
-                            console.log(pokemonType);
-                            //return two random pokemon moves
-
-                            pokemonMoveOne = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
-                            console.log(pokemonMoveOne);
-
-                            pokemonMoveTwo = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
-                            console.log(pokemonMoveTwo);
                           
                             console.error(err2);
                         }).catch(function (err3) { //Error catching ////////////////////////////////////
