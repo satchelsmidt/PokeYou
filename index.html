@@ -35,10 +35,12 @@
 
 <body>
 
-    <!-- Screen 1 HTML -->
-    <div class="container">
-        <div class="row">
-            <div class="col" id="intro">
+
+<!-- Screen 1 HTML -->
+<div class="container">
+    <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-9 col-xl-6" id="intro">
+
                 <img id="gameboy" src="images/closeup.PNG">
             </div>
             <div class="col font" id="introtext">
@@ -47,66 +49,70 @@
             </div>
             <div class="col font" id="instructions">
                 <p>My name is Profressor Oak! Instruction text here blah blah blah<br>
-                    Press the down arrow</p>
-                <div id="profOak"><img src="../Prof Oak.png"></div>
+
+                Press the down arrow</p>
+                <!-- <div id="profOak"><img
+                    src="../Prof Oak.png"></div>                 -->
             </div>
             <div class="col" id="akey"></div>
             <div class="col" id="downkey"></div>
         </div>
     </div>
 
-
     <!-- Screen 2 HTML -->
 
 
-    <div class="container" id="screentwo">
-        <div class="row">
+    <div class="container">
+        <div class="row screentwo" id="upload">
             <!-- Image input card -->
-            <div class="card col-4 cardOne" data-aos="flip-down" id="User-Image-Container" style="width: 18rem;">
+            <div class="card col-xs-1 col-sm-1 col-md-8 col-lg-8 col-xl-12 cardOne" data-aos="flip-down" id="User-Image-Container" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Upload your photo below:</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Have the picture render here.</p>
+                    <div id="userImageHolder">
+                        <img id="userImage" src="../Project/images/male-profile-image-placeholder.png" alt="placeholder user image">
+                    </div>
                     <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
                 </div>
-
-
 
 
                 <!-- Adding the image submit button -->
                 <div id="Button-Container">
                     <!-- ADDED ID FOR SUBMIT BUTTON -->
-                    <button type="button" id="submitButton">SUBMIT BUTTON HERE</button>
+                    <button type="button" id="submitButton">Which Pokemon am I?</button>
                 </div>
             </div>
+        </div>
 
             <!-- Pokemon results card -->
-            <div class="card col-4 cardTwo" data-aos="flip-down" id="pokecard" style="width: 18rem;">
+        <div class="row screentwo" id="results">
+            <div class="card col-xs-1 col-sm-1 col-md-8 col-lg-8 col-xl-10 cardTwo" data-aos="flip-down" id="pokecard" style="width: 18rem;">
                 <div class="card-body" id="User-Image-Container">
                     <h5 class="card-title">Pokemon card:</h5>
                     <!-- Display Poke -->
                     <p id="Test-Image-Container test-image"></p>
-                    <div id="pokeImage"><img
-                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div>
+                    <div id="pokeImage"><img id="pokeImageReal"
+                            src="../Project/images/question.png"></div>
                     <!-- Name and Stats display -->
                     <div id="table-container">
                         <table style="width:100%">
-                            <h4>Pokemon Name</h4>
+
+                          <h4 id="pokeName">Pokemon Name</h4>
+
                             <tr>
-                                <td>Description:</td>
-                                <td align="center">Description goes here</td>
+                                <td>Type:</td>
+                                <td align="center" id="pokemonType">Type goes here</td>
                             </tr>
                             <tr>
                                 <td>Ability:</td>
-                                <td align="center">Ability goes hear</td>
+                                <td align="center" id="pokemonAbility">Ability goes hear</td>
                             </tr>
                             <tr>
                                 <td>Move:</td>
-                                <td align="center">First move</td>
+                                <td align="center" id="pokemonMoveOne">First move</td>
                             </tr>
                             <tr>
                                 <td>Move:</td>
-                                <td align="center">Second move</td>
+                                <td align="center" id="pokemonMoveTwo">Second move</td>
                             </tr>
                         </table>
                     </div>
@@ -120,7 +126,11 @@
             </div>
         </div>
     </div>
+
     <div id="fb-root"></div>
+
+</div>
+
 
     <!-- <div id="pokeImage"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div> -->
     <!-- Facebook sharing script -->
