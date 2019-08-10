@@ -74,6 +74,11 @@ p {
     margin-top: 70%;
 }
 
+#userImage {
+    width: 100px;
+    height: 100px;
+}
+
 #results {
     margin-top: 9%;
     margin-bottom: 13%;
