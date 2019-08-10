@@ -7,43 +7,39 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
-#intro {
-    margin-left: 15%;
-    margin-top: 1%;
-    margin-bottom: 30%;
-    
-}
-
 #gameboy {
-    height: 800px;
-    width: 790px;
+    width: 100%;
+    height: auto;
     border-radius: 30px;
     position: relative;
+    margin-top: 24%;
+    margin-left: 8%;
 }
+
 
 #introtext {
     color: black;
     position: absolute;
-    width: 28%;
-    top: 160px;
-    right: 516px;
+    width: 61%;
+    top: 26%;
+    right: 11%;
     text-align: center;
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 19px;
 }
 
 p {
-    margin-top: 25px;
+    font-size: 9px;
 }
 
 #instructions {
     color: black;
     position: absolute;
-    width: 28%;
-    top: 160px;
-    right: 516px;
+    width: 61%;
+    top: 29%;
+    right: 12%;
     text-align: center;
 }
 
@@ -52,10 +48,10 @@ p {
     border-color: white;
     border-width: 3px;
     position: absolute;
-    height: 150px;
-    width: 150px;
-    top: 610px;
-    left: 965px;
+    height: 75px;
+    width: 61px;
+    top: 61%;
+    right: 1%;
 }
 
 #downkey {
@@ -63,56 +59,501 @@ p {
     border-color: white;
     border-width: 3px;
     position: absolute;
-    height: 100px;
-    width: 100px;
-    top: 700px;
-    left: 512px;
+    height: 50px;
+    width: 73px;
+    top: 69%;
+    right: 54%;
 }
 
-#screentwo {
-    margin-bottom: 25%;
-    margin-left: 10%;
-    margin-right: 10%;
+.screentwo {
+    margin-left: 8%;
 }
 
-#User-Image-Container {
-    position: relative;
+
+#upload {
+    margin-top: 70%;
 }
 
-#pokecard {
-    float: right;
-    margin-left: 30%;
+#results {
+    margin-top: 9%;
+    margin-bottom: 13%;
 }
 
-h4, h5, h6 {
-    text-align: center;
+
+/* Mobile M */
+@media (min-width: 375px) {
+
+    #gameboy {
+        margin-top: 7%;
+        margin-left: 0%;
+        width: 94%
+        
+    }
+    
+    #introtext {
+        color: black;
+        position: absolute;
+        width: 50%;
+        top: 17%;
+        right: 28%;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    #instructions {
+        width: 55%;
+        top: 23%;
+        right: 25%;
+    }
+    
+
+    #akey {
+        height: 60px;
+        width: 64px;
+        top: 52%;
+        right: 13%;
+    }
+    
+    #downkey {
+        height: 53px;
+        width: 91px;
+        top: 58%;
+        right: 62%;
+    }
+
+  
+    .screentwo {
+        margin-left: 4%;
+        margin-right: 10%;
+    }
+    
+    
+    #upload {
+        margin-top: 61%;
+    }
+    
+    #results {
+        margin-top: 8%;
+        margin-bottom: 14%;
+    }
+    
+
+
 }
 
-#Button-Container {
-    display: block;
-    margin: auto;
-    margin-bottom: 1em;
-}
 
-.card-text {
-    text-align: center;
-}
+ /* iPhone 6/7/8 */
+@media (min-width: 414px) { 
 
-#pokeImage {
-    display: block;
-    margin: auto;
-    width: 30%;
-}
+    #gameboy {
+        margin-top: 7%;
+    }
 
-.cardOne {
-    background: linear-gradient(red, white);
-}
+    
+    #introtext {
+        color: black;
+        position: absolute;
+        width: 50%;
+        top: 16%;
+        right: 27%;
+        text-align: center;
+    }
 
-#userImage{
+    h1 {
+        font-size: 23px;
+    }
 
-    width: 200px;
-}
+    p {
+        margin-top: 8%;
+        font-size: 9px;
+    }
 
-#pokeImageReal{
-    width: 200px; 
-}
+    #instructions {
+        top: 21%;
+        right: 23%;
+        width: 59%
+    }
+
+    #akey {
+        height: 80px;
+        width: 83px;
+        top: 52%;
+        right: 11%;
+
+    }
+    
+    #downkey {
+        height: 61px;
+        width: 101px;
+        top: 58%;
+        right: 62%;
+    }
+
+    .screentwo {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    
+    
+    #upload {
+        margin-top: 35%;
+        margin-left: 10%;
+    }
+
+    #results {
+        margin-top: 18%;
+        margin-bottom: 27%;
+        margin-left: 10%;
+    }
+
+ }
+
+ /* iPhone X */
+@media (min-width: 375px) and (min-height: 812px) { 
+
+
+    #gameboy {
+        margin-top: 15%;
+        margin-left: 0%;
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    #introtext {
+        color: black;
+        position: absolute;
+        width: 50%;
+        top: 17%;
+        right: 29%;
+        text-align: center;
+    }
+
+    p {
+        margin-top: 7px;
+        font-size: 9px;
+    }
+
+    #instructions {
+        width: 55%;
+        top: 21%;
+        right: 25%;
+    }
+
+    #akey {
+        height: 65px;
+        width: 71px;
+        top: 46%;
+        right: 12%;
+
+    }
+    
+    #downkey {
+        height: 53px;
+        width: 94px;
+        top: 51%;
+        right: 61%;
+    }
+
+    .screentwo {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    
+    
+    #upload {
+        margin-top: 65%;
+        margin-left: 0%;
+    }
+
+    #results {
+        margin-top: 15%;
+        margin-bottom: 20%;
+        margin-left: 0%;
+
+    }
+
+
+ }
+
+  /* iPad */
+@media (min-width: 768px) and (min-height: 1024px) { 
+
+
+    #gameboy {
+        margin-top: 5%;
+        margin-left: 0%;
+    }
+    
+    h1 {
+        font-size: 45px;
+    }
+    
+    #introtext {
+        color: black;
+        position: absolute;
+        width: 44%;
+        top: 20%;
+        right: 32%;
+        text-align: center;
+    }
+
+    #instructions {
+        width: 48%;
+        top: 29%;
+        right: 28%;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    #akey {
+        height: 131px;
+        width: 136px;
+        top: 66%;
+        right: 13%;
+
+    }
+    
+    #downkey {
+        height: 110px;
+        width: 161px;
+        top: 74%;
+        right: 63%;
+    }
+
+    .screentwo {
+        margin-left: 0%;
+    }
+    
+    
+    #upload {
+        margin-top: 50%;
+        margin-left: 18%;
+    }
+
+    #results {
+        margin-top: 15%;
+        margin-bottom: 40%;
+        margin-left: 18%;
+
+    }
+
+
+ }
+
+ /* iPad Pro */
+@media (min-width: 1024px) and (min-height: 1366px) { 
+
+
+    #gameboy {
+        margin-top: 6%;
+        margin-left: 4%;
+    }
+    
+    h1 {
+        font-size: 53px;
+    }
+    
+    #introtext {
+        color: black;
+        position: absolute;
+        width: 51%;
+        top: 22%;
+        right: 26%;
+        text-align: center;
+    }
+
+    #instructions {
+        width: 53%;
+        top: 28%;
+        right: 26%;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 20px;
+
+    }
+
+    #akey {
+        height: 131px;
+        width: 136px;
+        top: 63%;
+        right: 18%;
+
+    }
+    
+    #downkey {
+        height: 110px;
+        width: 168px;
+        top: 70%;
+        right: 64%;
+    }
+
+    .screentwo {
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+    
+    
+    #upload {
+        margin-top: 40%;
+        margin-left: 17%;
+    }
+
+    #results {
+        margin-top: 15%;
+        margin-bottom: 50%;
+        margin-left: 17%;
+
+    }
+
+
+ }
+
+  /* Laptop */
+@media (min-width: 1440px) and (min-height: 900px) { 
+
+
+    #gameboy {
+        margin-top: 8%;
+        margin-left: 35%;
+    }
+    
+    h1 {
+        font-size: 42px;
+    }
+    
+    #introtext {
+        color: black;
+        position: absolute;
+        width: 23%;
+        top: 23%;
+        right: 41%;
+        text-align: center;
+    }
+
+    #instructions {
+        width: 25%;
+        top: 33%;
+        right: 40%;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 14px;
+
+    }
+
+    #akey {
+        height: 131px;
+        width: 128px;
+        top: 71%;
+        right: 33%;
+
+    }
+    
+    #downkey {
+        height: 97px;
+        width: 168px;
+        top: 79%;
+        right: 57%;
+    }
+
+    .screentwo {
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+    
+    
+    #upload {
+        margin-top: 40%;
+        margin-left: 17%;
+    }
+
+    #results {
+        margin-top: 10%;
+        margin-bottom: 10%;
+        margin-left: 17%;
+
+    }
+
+
+ }
+
+   /* Desktop */
+@media (min-width: 1440px) and (min-height: 900px) { 
+
+
+    #gameboy {
+        margin-top: 8%;
+        margin-left: 50%;
+    }
+    
+    h1 {
+        font-size: 42px;
+    }
+    
+    #introtext {
+        color: black;
+        position: absolute;
+        width: 23%;
+        top: 23%;
+        right: 41%;
+        text-align: center;
+    }
+
+    #instructions {
+        width: 25%;
+        top: 33%;
+        right: 40%;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 14px;
+
+    }
+
+    #akey {
+        height: 131px;
+        width: 128px;
+        top: 71%;
+        right: 33%;
+
+    }
+    
+    #downkey {
+        height: 97px;
+        width: 168px;
+        top: 79%;
+        right: 57%;
+    }
+
+    .screentwo {
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+    
+    
+    #upload {
+        margin-top: 40%;
+        margin-left: 17%;
+    }
+
+    #results {
+        margin-top: 10%;
+        margin-bottom: 10%;
+        margin-left: 17%;
+
+    }
+
+
+ }
