@@ -31,26 +31,25 @@
 
 <body>
 
-<!-- Screen 1 HTML -->
-<div class="container">
-    <div class="row">
+    <!-- Screen 1 HTML -->
+    <div class="container">
+        <div class="row">
             <div class="col" id="intro">
                 <img id="gameboy" src="images/closeup.PNG">
             </div>
             <div class="col font" id="introtext">
                 <h1>PokeYou!</h1>
-                <p>Click "A" to get started...</p>                
+                <p>Click "A" to get started...</p>
             </div>
             <div class="col font" id="instructions">
                 <p>My name is Profressor Oak! Instruction text here blah blah blah<br>
-                Press the down arrow</p>
-                <div id="profOak"><img
-                    src="../Prof Oak.png"></div>                
+                    Press the down arrow</p>
+                <div id="profOak"><img src="../Prof Oak.png"></div>
             </div>
             <div class="col" id="akey"></div>
             <div class="col" id="downkey"></div>
         </div>
-</div>
+    </div>
 
 
     <!-- Screen 2 HTML -->
@@ -68,7 +67,7 @@
                 </div>
 
 
-                
+
 
                 <!-- Adding the image submit button -->
                 <div id="Button-Container">
@@ -88,22 +87,105 @@
                     <!-- Name and Stats display -->
                     <div id="table-container">
                         <table style="width:100%">
-                          <h4>Pokemon Name</h4>
+                            <h4>Pokemon Name</h4>
                             <tr>
-                                <td>Description:</td>
-                                <td align="center">Description goes here</td>
+                                <td class="roundy" colspan="2" style="background: #FFFFFF;">
+                                    <table class="roundy" width="100%" style="background: #FFFFFF;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="roundy" width="50%"
+                                                    style="background: #6D6D4E; border: 2px solid #6D6D4E">
+                                                    <table class="roundy" width="100%"
+                                                        style="background: #FFFFFF; border-collapse:collapse;"
+                                                        cellspacing="1" cellpadding="3">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align: center;">Type
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"
+                                                                    style="background: #A8A878; border: 1px solid; text-align: center;">
+                                                                    Electric
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+
+                                                <td class="roundy" width="50%"
+                                                    style="background: #6D6D4E; border: 2px solid #6D6D4E">
+                                                    <table class="roundy" width="100%"
+                                                        style="background: #FFFFFF; border-collapse:collapse;"
+                                                        cellspacing="1" cellpadding="3">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align: center;">Something
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"
+                                                                    style="background: #A8A878; border: 1px solid; text-align: center;">
+                                                                    Else
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
                             </tr>
+
                             <tr>
-                                <td>Ability:</td>
-                                <td align="center">Ability goes hear</td>
-                            </tr>
-                            <tr>
-                                <td>Move:</td>
-                                <td align="center">First move</td>
-                            </tr>
-                            <tr>
-                                <td>Move:</td>
-                                <td align="center">Second move</td>
+                                <td class="roundy" colspan="2" style="background: #FFFFFF;">
+                                    <table class="roundy" width="100%" style="background: #FFFFFF;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="roundy" width="50%"
+                                                    style="background: #6D6D4E; border: 2px solid #6D6D4E">
+                                                    <table class="roundy" width="100%"
+                                                        style="background: #FFFFFF; border-collapse:collapse;"
+                                                        cellspacing="1" cellpadding="3">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align: center;">Move One
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"
+                                                                    style="background: #A8A878; border: 1px solid; text-align: center;">
+                                                                    Cook
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+
+                                                <td class="roundy" width="50%"
+                                                    style="background: #6D6D4E; border: 2px solid #6D6D4E">
+                                                    <table class="roundy" width="100%"
+                                                        style="background: #FFFFFF; border-collapse:collapse;"
+                                                        cellspacing="1" cellpadding="3">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align: center;">Move Two
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"
+                                                                    style="background: #A8A878; border: 1px solid; text-align: center;">
+                                                                    Clean
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -119,6 +201,7 @@
     <!-- Promise based HTTP client for the browser and node.js -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
+
 
 </body>
 
