@@ -75,7 +75,8 @@ p {
 }
 
 #userImage {
-    width: 15%;
+    width: 100px;
+    height: 100px;
 }
 
 #results {
