@@ -1,5 +1,6 @@
 body {
-    background-image: url(images/dark-honeycomb/dark-honeycomb.png);
+    background: url(images/ashbackground.png);
+    background-attachment: fixed;
     margin: 0 auto;
 }
 
