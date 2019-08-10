@@ -31,6 +31,9 @@
 
     <!-- AOS Library JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
 
 </head>
 
@@ -231,7 +234,23 @@
     <!-- <div id="fb-root"></div> -->
 
     </div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
 
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDZEtfycw-tvxrYa5XG6gUJqUeeAaIRm34",
+    authDomain: "poke-you.firebaseapp.com",
+    databaseURL: "https://poke-you.firebaseio.com",
+    projectId: "poke-you",
+    storageBucket: "poke-you.appspot.com",
+    messagingSenderId: "525511482555",
+    appId: "1:525511482555:web:700ad5e389b5c58d"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
 
     <!-- <div id="pokeImage"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div> -->
     <!-- Facebook sharing script -->
@@ -243,13 +262,13 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script> -->
 
-
+    <!-- jquery  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Promise based HTTP client for the browser and node.js -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- App script -->
     <script type="text/javascript" src="app.js"></script>
-
-
 </body>
 
 </html>
