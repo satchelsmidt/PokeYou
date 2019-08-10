@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta property="og:title" content="PokeYou!" />
     <meta property="og:description" content="Find your inner Pokemon" />
-    <meta id="facebook-img" property="og:image" content="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"/>
+    <meta id="facebook-img" property="og:image"
+        content="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" />
     <title>PokeYou</title>
 
 
@@ -36,9 +37,9 @@
 <body>
 
 
-<!-- Screen 1 HTML -->
-<div class="container">
-    <div class="row">
+    <!-- Screen 1 HTML -->
+    <div class="container">
+        <div class="row">
             <div class="col-xs-12 col-sm-12 col-lg-9 col-xl-6" id="intro">
 
                 <img id="gameboy" src="images/closeup.PNG">
@@ -50,7 +51,7 @@
             <div class="col font" id="instructions">
                 <p>My name is Profressor Oak! Instruction text here blah blah blah<br>
 
-                Press the down arrow</p>
+                    Press the down arrow</p>
                 <!-- <div id="profOak"><img
                     src="../Prof Oak.png"></div>                 -->
             </div>
@@ -65,11 +66,13 @@
     <div class="container">
         <div class="row screentwo" id="upload">
             <!-- Image input card -->
-            <div class="card col-xs-1 col-sm-1 col-md-8 col-lg-8 col-xl-12 cardOne" data-aos="flip-down" id="User-Image-Container" style="width: 18rem;">
+            <div class="card col-xs-1 col-sm-1 col-md-8 col-lg-8 col-xl-12 cardOne" data-aos="flip-down"
+                id="User-Image-Container" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Upload your photo below:</h5>
                     <div id="userImageHolder">
-                        <img id="userImage" src="../Project/images/male-profile-image-placeholder.png" alt="placeholder user image">
+                        <img id="userImage" src="../Project/images/male-profile-image-placeholder.png"
+                            alt="placeholder user image">
                     </div>
                     <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
                 </div>
@@ -83,24 +86,24 @@
             </div>
         </div>
 
-            <!-- Pokemon results card -->
+        <!-- Pokemon results card -->
         <div class="row screentwo" id="results">
-            <div class="card col-xs-1 col-sm-1 col-md-8 col-lg-8 col-xl-10 cardTwo" data-aos="flip-down" id="pokecard" style="width: 18rem;">
+            <div class="card col-xs-1 col-sm-1 col-md-8 col-lg-8 col-xl-10 cardTwo" data-aos="flip-down" id="pokecard"
+                style="width: 18rem;">
                 <div class="card-body" id="User-Image-Container">
                     <h5 class="card-title">Pokemon card:</h5>
                     <!-- Display Poke -->
                     <p id="Test-Image-Container test-image"></p>
-                    <div id="pokeImage"><img id="pokeImageReal"
-                            src="../Project/images/question.png"></div>
+                    <div id="pokeImage"><img id="pokeImageReal" src="../Project/images/question.png"></div>
                     <!-- Name and Stats display -->
                     <div id="table-container">
                         <table style="width:100%">
 
-                          <h4 id="pokeName">Pokemon Name</h4>
+                            <h4 id="pokeName">Pokemon Name</h4>
 
                             <tr>
                                 <td>Type:</td>
-                                <td align="center" id="pokemonType">Type goes here</td>
+                                <td align="center">Type goes here</td>
                             </tr>
                             <tr>
                                 <td class="roundy" colspan="2" style="background: #FFFFFF;">
@@ -118,7 +121,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="2"
+                                                                <td colspan="2" id="pokemonType"
                                                                     style="background: #A8A878; border: 1px solid; text-align: center;">
                                                                     Electric
                                                                 </td>
@@ -134,11 +137,11 @@
                                                         cellspacing="1" cellpadding="3">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" style="text-align: center;">Something
+                                                                <td colspan="2" style="text-align: center;">Ability
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="2"
+                                                                <td colspan="2" id="pokemonAbility"
                                                                     style="background: #A8A878; border: 1px solid; text-align: center;">
                                                                     Else
                                                                 </td>
@@ -168,7 +171,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="2"
+                                                                <td colspan="2" id="pokemonMoveOne"
                                                                     style="background: #A8A878; border: 1px solid; text-align: center;">
                                                                     Cook
                                                                 </td>
@@ -188,7 +191,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="2"
+                                                                <td colspan="2" id="pokemonMoveTwo"
                                                                     style="background: #A8A878; border: 1px solid; text-align: center;">
                                                                     Clean
                                                                 </td>
@@ -204,11 +207,14 @@
                         </table>
                     </div>
                     <!-- Facebook sharing button -->
-                    <div class="fb-share-button" style="padding-left: 110px" data-href="https://satchelsmidt.github.io/Project"
-                        data-layout="button_count">
+                    <!-- <div class="fb-share-button" style="padding-left: 110px"
+                        data-href="https://satchelsmidt.github.io/Project" data-layout="button_count">
                     </div>
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" id="twitter-link" data-text="I found my inner Pokemon!" data-hashtags="pokemon" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-     
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+                        id="twitter-link" data-text="I found my inner Pokemon!" data-hashtags="pokemon"
+                        data-show-count="false">Tweet</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
                 </div>
             </div>
         </div>
@@ -216,18 +222,18 @@
 
     <div id="fb-root"></div>
 
-</div>
+    </div>
 
 
     <!-- <div id="pokeImage"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div> -->
     <!-- Facebook sharing script -->
-    <script>(function (d, s, id) {
+    <!-- <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
             js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        }(document, 'script', 'facebook-jssdk'));</script> -->
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
