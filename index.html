@@ -69,7 +69,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Upload your photo below:</h5>
                     <div id="userImageHolder">
-                        <img id="userImage" src="../Project/images/male-profile-image-placeholder.png" alt="placeholder user image">
+                        <img id="userImage" src="../Project/images/male-profile-image-placeholder.png" alt="user image">
                     </div>
                     <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
                 </div>
@@ -79,6 +79,15 @@
                 <div id="Button-Container">
                     <!-- ADDED ID FOR SUBMIT BUTTON -->
                     <button type="button" id="submitButton">Which Pokemon am I?</button>
+                </div>
+            </div>
+              <!-- Error card when the Face API fails -->
+            <div id="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h1>Team Rocket strikes again!</h1>
+                    <img src="images/teamrocket.jpg" id="teamRocket">
+                    <h6>Upload a new image and try again. Remember image files only!</h6>
                 </div>
             </div>
         </div>
@@ -203,11 +212,11 @@
                             </tr>
                         </table>
                     </div>
-                    <!-- Facebook sharing button -->
+                    <!-- Facebook sharing button
                     <div class="fb-share-button" style="padding-left: 110px" data-href="https://satchelsmidt.github.io/Project"
                         data-layout="button_count">
                     </div>
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" id="twitter-link" data-text="I found my inner Pokemon!" data-hashtags="pokemon" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" id="twitter-link" data-text="I found my inner Pokemon!" data-hashtags="pokemon" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
      
                 </div>
             </div>
