@@ -6,7 +6,7 @@ $(document).ready(function () {
     $("#instructions").hide();
 })
 
-// onclick function for when the user clicks the image
+// onclick function for when the user clicks the A button
 
 $("#akey").on("click", function () {
 
@@ -16,6 +16,20 @@ $("#akey").on("click", function () {
 
     // display instructions div
     $("#instructions").show();
+
+})
+
+// onclick function for when the user clicks the B button
+
+$("#bkey").on("click", function () {
+    console.log("success b click")
+    if (!$(".pokeball").hasClass("pokeballanimate") && !$(".pokeball__button").hasClass("pokeball__buttonanimate")) {
+        $(".pokeball").addClass("pokeballanimate");
+        $(".pokeball__button").addClass("pokeball__buttonanimate");
+    } else {
+        $(".pokeball").removeClass("pokeballanimate");
+        $(".pokeball__button").removeClass("pokeball__buttonanimate");
+    }
 
 })
 
