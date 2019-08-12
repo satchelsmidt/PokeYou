@@ -66,6 +66,22 @@ var pokemonAbility;
 var pokemonMoveOne;
 var pokemonMoveTwo;
 
+const pokeList = $('#top-five');
+
+//create list elements for the top 5 pokemon list 
+function renderPokemon(doc){
+    let li = $('<li>');
+    let pokeImg = $('<img>').attr('src', doc.data().link);
+    let name = $('<span>').text(doc.data().name);
+    let count = $('<span>').text(doc.data().count);
+
+    li.append(pokeImg);
+    li.append(name);
+    li.append(count);
+
+    pokeList.append(li);
+}
+
 
 /*=============================================
 =User image upload (POST) and faceAPI call (POST)=
@@ -245,7 +261,14 @@ $("#submitButton").on("click", function () {
 
 });
 
-
+db.collection('pokeCount').orderBy('count','desc').limit(5).onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+        if(change.type == 'added'){
+            renderPokemon(change.doc);
+        }
+    })
+});
 
 
 
