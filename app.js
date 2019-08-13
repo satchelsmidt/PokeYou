@@ -483,20 +483,6 @@ db.collection('pokeCount').orderBy('count','desc').limit(5).onSnapshot(snapshot 
 
 //================= reset button functionality ===================
 $("#resetButton").on('click', function() {
-<<<<<<< HEAD
-
-    $("#pokemonType").text("");
-    $("#pokemonAbility").text("");
-    $("#pokemonMoveOne").text("");
-    $("#pokemonMoveTwo").text("");
-    $("#pokeName").text("");
-    $("#pokeImageReal").attr("src","../Project/images/question.png");
-    $("#userImage").attr("src","../Project/images/male-profile-image-placeholder.png");
-    $("#user-image").val("");
-    $(window).scrollTop(0);
-})
-=======
->>>>>>> 04cc82445f37537b28f780c0a6f3610f223b9d19
 
     $("#pokemonType").text("");
     $("#pokemonAbility").text("");
