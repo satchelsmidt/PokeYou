@@ -4,9 +4,10 @@
 
 $(document).ready(function () {
     $("#instructions").hide();
+    $("#modal").hide();
 })
 
-// onclick function for when the user clicks the image
+// onclick function for when the user clicks the A button
 
 $("#akey").on("click", function () {
 
@@ -16,6 +17,20 @@ $("#akey").on("click", function () {
 
     // display instructions div
     $("#instructions").show();
+
+})
+
+// onclick function for when the user clicks the B button
+
+$("#bkey").on("click", function () {
+    console.log("success b click")
+    if (!$(".pokeball").hasClass("pokeballanimate") && !$(".pokeball__button").hasClass("pokeball__buttonanimate")) {
+        $(".pokeball").addClass("pokeballanimate");
+        $(".pokeball__button").addClass("pokeball__buttonanimate");
+    } else {
+        $(".pokeball").removeClass("pokeballanimate");
+        $(".pokeball__button").removeClass("pokeball__buttonanimate");
+    }
 
 })
 
@@ -62,6 +77,23 @@ let pokeTotalsArray = [];
 //Define user returned pokemon and random returned pokemon
 var userPokemon;
 var randomPokemon;
+
+//Pokemon List Functionality
+const pokeList = $('#top-five');
+
+//create list elements for the top 5 pokemon list 
+function renderPokemon(doc) {
+    let li = $('<li>');
+    let pokeImg = $('<img>').attr('src', doc.data().link);
+    let name = $('<span>').text(doc.data().name);
+    let count = $('<span>').text(doc.data().count);
+
+    li.append(pokeImg);
+    li.append(name);
+    li.append(count);
+
+    pokeList.append(li);
+}
 
 /*=============================================
 =User image upload (POST) and faceAPI call (POST)=
@@ -200,48 +232,51 @@ $(document).ready(function () {
 
                             });
 
-                            let isThere = false;
-                            //iterate through the pokeTotals array 
-                            //check to see if the pokemon is in the array and add to the count if so and cset isThere to true so that a duplicate is not added after the loop ends 
-                            for (let i = 0; i < pokeTotalsArray.length - 1; i++) {
-                                if (isThere === false) {
-                                    if (pokeTotalsArray[i].name === res3.name) {
-                                        isThere = true;
-                                        pokeTotalsArray[i].count = pokeTotalsArray[i].count + 1;
-                                    }
+                            //FIREBASE
+                            ///add pokemon to firebase
+                            db.collection('pokeCount').doc(userPokemon.pokemonName).get().then((snapshot) => {
+                                //if pokemon is not in the database add it
+                                if (snapshot.data() === undefined) {
+                                    db.collection('pokeCount').doc(userPokemon.pokemonName).set({
+                                        name: userPokemon.pokemonName,
+                                        link: userPokemon.pokemonImage,
+                                        count: 1,
+                                    });
                                 }
-                            }
-                            //creates a new pokemon object to keep count and grab the link to the sprite 
-                            if (isThere === false) {
-                                let countedPokemon = {
-                                    name: res3.name,
-                                    link: res3.sprites.front_default,
-                                    count: 1
+                                //if pokemon is in the database, increase the count 
+                                else {
+                                    db.collection('pokeCount').doc(userPokemon.pokemonName).update({
+                                        count: snapshot.data().count + 1,
+                                    });
                                 }
-                                pokeTotalsArray.push(countedPokemon);
-                            }
-
-                            console.log(pokeTotalsArray);
+                            })
 
                             //set the meta tag which represents the image when shared to facebook
-                            $("#facebook-img").attr("content", res3.sprites.front_default);
-                            $("#twitter-link").attr("data-url", res3.sprites.front_default);
+                            $("#facebook-img").attr("content", userPokemon.pokemonImage);
+                            $("#twitter-link").attr("data-url", userPokemon.pokemonImage);
 
-                        }).catch(function (err3) { //Error catching ////////////////////////////////////
-                            console.error(err2);
-                        }).catch(function (err3) { 
+                        }).catch(function (err3) { ////BEGIN ERROR CATCHING /////////////////////////////////
                             console.error(err3);
                         })
                     })
+
                     //returns a Promise and deals with rejected cases 
                     .catch(function (err2) {
                         console.error(err2);
+                        //display modal element
+                        $("#modal").show();
+
+                        //close modal when X is clicked
+                        $(".close").on("click", function () {
+                            $("#modal").hide();
+
+                        });
                     })
             })
             .catch(function (err) {
                 console.error(err);
-            }); 
-    // End of error catching ////////////////////////////////////////////////
+            });
+        // End of error catching ////////////////////////////////////////////////
     });
 });
 
@@ -263,6 +298,12 @@ $("#submitButton").on("click", function () {
 
 });
 
+//Define music vars
+let battleMusic = document.getElementById("battleMusic")
+let victoryMusic = document.getElementById("victoryMusic")
+let failureMusic = document.getElementById("failureMusic")
+
+
 //Function that runs when battle button is clicked (BATTLE ZONE)
 $("#battleButton").on("click", function () {
 
@@ -270,7 +311,6 @@ $("#battleButton").on("click", function () {
     $("#battleButton").attr("hidden", true)
 
     //Play battle music
-    let battleMusic = document.getElementById("battleMusic")
     battleMusic.play()
 
     /////////////////// APPEND HELLA THINGS TO CREATE USER CARD //////////////////////////////
@@ -348,31 +388,35 @@ document.addEventListener("click", function (e) {
         //check if user health is < 0, if it is don't run the function
         if (userPokemon.pokemonHealth <= 0) {
             return
-        }
+        };
 
         //Do damage to enemy
         randomPokemon.pokemonHealth = randomPokemon.pokemonHealth - userPokemon.pokemonMoveOneDmg;
-        $("#enemyHealth").text("Health: " + randomPokemon.pokemonHealth)
+        $("#enemyHealth").text("Health: " + randomPokemon.pokemonHealth);
         //increase turn count
-        count = count + 1
+        count = count + 1;
 
         //check to see if enemy dead, if dead do win things and end function
         if (randomPokemon.pokemonHealth <= 0) {
             $("#randPokeBattle").empty();
-            $("#randPokeBattle").append($("<h1>YOU WIN!!!!!!!!</h1>"))
-            $("#waitText").attr('hidden', true)
+            $("#randPokeBattle").append($("<h1>YOU WIN!!!!!!!!</h1>"));
+            battleMusic.pause();
+            victoryMusic.play();
+            $("#waitText").attr('hidden', true);
             return
         }
 
         //Do return damage to user
-        userPokemon.pokemonHealth = userPokemon.pokemonHealth - userPokemon.damageReceived
-        $("#userHealth").text("Health: " + userPokemon.pokemonHealth)
+        userPokemon.pokemonHealth = userPokemon.pokemonHealth - userPokemon.damageReceived;
+        $("#userHealth").text("Health: " + userPokemon.pokemonHealth);
 
         //Check to see if user dead, if dead do lose things
         if (userPokemon.pokemonHealth <= 0) {
             $("#userPokeBattle").empty();
-            $("#userPokeBattle").append($("<h1>YOU LOSE!!!!!!!!</h1>"))
-            $("#waitText").attr('hidden', true)
+            $("#userPokeBattle").append($("<h1>YOU LOSE!!!!!!!!</h1>"));
+            battleMusic.pause();
+            failureMusic.play();
+            $("#waitText").attr('hidden', true);
         }
 
     }
@@ -424,3 +468,15 @@ document.addEventListener("click", function (e) {
         }
     }
 });
+
+db.collection('pokeCount').orderBy('count','desc').limit(5).onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+        if(change.type == 'added'){
+            renderPokemon(change.doc);
+        }
+    })
+});
+
+
+

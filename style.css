@@ -1,6 +1,55 @@
 body {
-    background-image: url(images/dark-honeycomb/dark-honeycomb.png);
+    background: url(images/ashbackground.png);
+    background: cover;
+    background-attachment: fixed;
     margin: 0 auto;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+li{
+    padding: 20px;
+    background: #f6f6f6;
+    font-size: 20px;
+    color: #555;
+    position: relative;
+    border-bottom: 1px solid #e6e6e6;
+    height: 46px;
+    width: 220px;
+    padding-bottom: 100px;
+}
+
+li:nth-child(even){
+    padding: 20px;
+    background: #f2f2f2;
+    padding-bottom: 100px;
+}
+
+li span{
+    display: block;
+}
+
+li span:nth-child(2){
+    font-size: 16px;
+    margin-top: 6px;
+    color: #999;
+}
+
+li div{
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: rgba(255,255,255,0.6);
+    width: 40px;
+    text-align: center;
+    padding: 10px 0;
+    font-weight:  bold;
+    cursor:  pointer;
+}
+
+li img {
+    float: left;
 }
 
 .font {
@@ -21,7 +70,7 @@ body {
     color: black;
     position: absolute;
     width: 61%;
-    top: 26%;
+    top: 5%;
     right: 11%;
     text-align: center;
 }
@@ -38,12 +87,23 @@ p {
     color: black;
     position: absolute;
     width: 61%;
-    top: 29%;
+    top: 13%;
     right: 12%;
     text-align: center;
 }
 
 #akey {
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    position: absolute;
+    height: 75px;
+    width: 61px;
+    top: 61%;
+    right: 1%;
+}
+
+#bkey {
     border-style: solid;
     border-color: white;
     border-width: 3px;
@@ -65,6 +125,41 @@ p {
     right: 54%;
 }
 
+/* ====== POKE BALL ANIMATION ======== */
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .center-on-page {
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  /* Poké Styles */
+
+  .pokeballanimate {
+    animation: shake 1.25s cubic-bezier(.36,.07,.19,.97) 3;
+  }
+  .pokeball__buttonanimate {
+    animation: blink .5s alternate 7;
+  }
+
+  /* Animation */
+
+  @keyframes shake {
+    0 { transform: translate(0, 0) rotate(0); }
+    20% { transform: translate(-10px, 0) rotate(-20deg); }
+    30% { transform: translate(10px, 0) rotate(20deg); }
+    50% { transform: translate(-10px, 0) rotate(-10deg); }
+    60% { transform: translate(10px, 0) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
+
+  /* =========== END ANIMATION ============= */
+
 .screentwo {
     margin-left: 8%;
 }
@@ -83,6 +178,50 @@ p {
     margin-top: 9%;
     margin-bottom: 13%;
 }
+
+#teamRocket {
+    height: 100px;
+    width: 100px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    position: relative;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 95%;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
 
 /* Mobile M */
