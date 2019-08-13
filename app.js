@@ -4,6 +4,7 @@
 
 $(document).ready(function () {
     $("#instructions").hide();
+    $("#modal").hide();
 })
 
 // onclick function for when the user clicks the A button
@@ -79,6 +80,25 @@ var pokemonType;
 var pokemonAbility;
 var pokemonMoveOne;
 var pokemonMoveTwo;
+
+const pokeList = $('#top-five');
+
+//create list elements for the top 5 pokemon list 
+function renderPokemon(doc){
+    let li = $('<li>');
+    let pokeImg = $('<img>').attr('src', doc.data().link);
+    let name = $('<span>').text(doc.data().name);
+    let count = $('<span>').text(doc.data().count);
+
+    li.append(pokeImg);
+    li.append(name);
+    li.append(count);
+
+    pokeList.append(li);
+}
+
+
+
 
 
 /*=============================================
@@ -188,61 +208,66 @@ $(document).ready(function () {
                             //return pokemon image
 
                             pokemonImage = res3.sprites.front_default
-                            console.log(pokemonImage);
+                            // console.log(pokemonImage);
                             //return random pokemon ability
 
                             pokemonAbility = res3.abilities[Math.floor(Math.random() * res3.abilities.length)].ability.name
-                            console.log(pokemonAbility);
+                            // console.log(pokemonAbility);
                             //Return pokemon type (only one, if two types)
 
                             pokemonType = res3.types[Math.floor(Math.random() * res3.types.length)].type.name
-                            console.log(pokemonType);
+                            // console.log(pokemonType);
                             //return two random pokemon moves
 
                             pokemonMoveOne = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
-                            console.log(pokemonMoveOne);
+                            // console.log(pokemonMoveOne);
 
                             pokemonMoveTwo = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
-                            console.log(pokemonMoveTwo);
+                            // console.log(pokemonMoveTwo);
 
-                            let isThere = false;
-                            //iterate through the pokeTotals array 
-                            //check to see if the pokemon is in the array and add to the count if so and cset isThere to true so that a duplicate is not added after the loop ends 
-                            for (let i = 0; i < pokeTotalsArray.length - 1; i++) {
-                                if (isThere === false) {
-                                    if (pokeTotalsArray[i].name === res3.name) {
-                                        isThere = true;
-                                        pokeTotalsArray[i].count = pokeTotalsArray[i].count+1;
-                                    }
+                            //FIREBASE
+                            ///add pokemon to firebase
+                            db.collection('pokeCount').doc(res3.name).get().then((snapshot) => {
+                                //if pokemon is not in the database add it
+                                if (snapshot.data() === undefined) {
+                                    db.collection('pokeCount').doc(res3.name).set({
+                                        name: res3.name,
+                                        link: res3.sprites.front_default,
+                                        count: 1,
+                                    });
                                 }
-                            }
-                            //creates a new pokemon object to keep count and grab the link to the sprite 
-                            if (isThere === false) {
-                                let countedPokemon = {
-                                    name: res3.name,
-                                    link: res3.sprites.front_default,
-                                    count: 1
+                                //if pokemon is in the database, increase the count 
+                                else {
+                                    db.collection('pokeCount').doc(res3.name).update({
+                                        count: snapshot.data().count+1,
+                                    });
                                 }
-                                pokeTotalsArray.push(countedPokemon);
-                            }
-
-                            console.log(pokeTotalsArray);
+                            })
 
                             //set the meta tag which represents the image when shared to facebook
                             $("#facebook-img").attr("content", res3.sprites.front_default);
                             $("#twitter-link").attr("data-url", res3.sprites.front_default);
 
                         }).catch(function (err3) {
-                          
+
                             console.error(err2);
                         }).catch(function (err3) { //Error catching ////////////////////////////////////
 
                             console.error(err3);
                         })
                     })
+                    
                     //returns a Promise and deals with rejected cases 
                     .catch(function (err2) {
                         console.error(err2);
+                        //display modal element
+                        $("#modal").show();
+
+                        //close modal when X is clicked
+                        $(".close").on("click", function() {
+                            $("#modal").hide();
+
+                        });
                     })
             })
             .catch(function (err) {
@@ -262,3 +287,15 @@ $("#submitButton").on("click", function () {
     $("#pokemonMoveOne").text(pokemonMoveOne)
 
 });
+
+db.collection('pokeCount').orderBy('count','desc').limit(5).onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+        if(change.type == 'added'){
+            renderPokemon(change.doc);
+        }
+    })
+});
+
+
+

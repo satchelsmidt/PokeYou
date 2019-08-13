@@ -31,6 +31,9 @@
 
     <!-- AOS Library JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
 
 </head>
 
@@ -88,6 +91,15 @@
                 <div id="Button-Container">
                     <!-- ADDED ID FOR SUBMIT BUTTON -->
                     <button type="button" id="submitButton">Which Pokemon am I?</button>
+                </div>
+            </div>
+              <!-- Error card when the Face API fails -->
+            <div id="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h1>Team Rocket strikes again!</h1>
+                    <img src="images/teamrocket.jpg" id="teamRocket">
+                    <h6>Upload a new image and try again. Remember image files only!</h6>
                 </div>
             </div>
         </div>
@@ -213,7 +225,15 @@
                         </table>
                     </div>
                     <!-- Facebook sharing button -->
-                    <!-- <div class="fb-share-button" style="padding-left: 110px"
+                    <<<<<<< HEAD <!-- <div class="fb-share-button" style="padding-left: 110px"
+                        data-href="https://satchelsmidt.github.io/Project" data-layout="button_count">
+                </div>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" id="twitter-link"
+                    data-text="I found my inner Pokemon!" data-hashtags="pokemon" data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
+                =======
+                <!-- <div class="fb-share-button" style="padding-left: 110px"
                         data-href="https://satchelsmidt.github.io/Project" data-layout="button_count">
                     </div>
                     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
@@ -221,15 +241,38 @@
                         data-show-count="false">Tweet</a>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 
-                </div>
+                >>>>>>> d54bfc3620cb80950676ebcd4f1712ee84876031
             </div>
         </div>
-    </div>
 
-    <div id="fb-root"></div>
 
     </div>
+        <!-- Top 5 pokemon -->
+        <ul id="top-five">
+            <li>Top 5 Pokemon!!!</li>
+        </ul>
+    </div>
 
+    <!-- <div id="fb-root"></div> -->
+
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDZEtfycw-tvxrYa5XG6gUJqUeeAaIRm34",
+            authDomain: "poke-you.firebaseapp.com",
+            databaseURL: "https://poke-you.firebaseio.com",
+            projectId: "poke-you",
+            storageBucket: "poke-you.appspot.com",
+            messagingSenderId: "525511482555",
+            appId: "1:525511482555:web:700ad5e389b5c58d"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
 
     <!-- <div id="pokeImage"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div> -->
     <!-- Facebook sharing script -->
@@ -241,13 +284,13 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script> -->
 
-
+    <!-- jquery  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Promise based HTTP client for the browser and node.js -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- App script -->
     <script type="text/javascript" src="app.js"></script>
-
-
 </body>
 
 </html>
