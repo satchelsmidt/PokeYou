@@ -276,79 +276,14 @@ li img {
 }
 
 
-
-
-  /* ============================Small devices (landscape phones, 576px and up) ====================== */
-  @media (min-width: 576px) {
-
-    #gameboy {
-        margin-top: 7%;
-        margin-left: 0%;
-        width: 94%
-        
-    }
-    
-    #introtext {
-        color: black;
-        position: absolute;
-        width: 50%;
-        top: 17%;
-        right: 28%;
-        text-align: center;
-    }
-
-    h1 {
-        font-size: 22px;
-    }
-
-    #instructions {
-        width: 55%;
-        top: 23%;
-        right: 25%;
-    }
-    
-
-    #akey {
-        height: 60px;
-        width: 64px;
-        top: 52%;
-        right: 13%;
-    }
-    
-    #downkey {
-        height: 53px;
-        width: 91px;
-        top: 58%;
-        right: 62%;
-    }
-
-  
-    .screentwo {
-        margin-left: 4%;
-        margin-right: 10%;
-    }
-    
-    
-    #upload {
-        margin-top: 61%;
-    }
-    
-    #results {
-        margin-top: 8%;
-        margin-bottom: 14%;
-    }
-    
-
-  }
-
-  /* Medium devices (tablets, 768px and up) */
+  /* Medium devices (tablets, 768px and up)
   @media (min-width: 768px) { ... }
   
   /* Large devices (desktops, 992px and up) */
-  @media (min-width: 992px) { ... }
+  /* @media (min-width: 992px) { ... } */
   
   /* Extra large devices (large desktops, 1200px and up) */
-  @media (min-width: 1200px) { ... }
+  /* @media (min-width: 1200px) { ... } */
 
 
 
