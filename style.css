@@ -1,4 +1,4 @@
-/* GLOBAL CSS */
+/* =========================================GLOBAL CSS======================================= */
 body {
     background: url(images/ashbackground.png);
     background: cover;
@@ -11,11 +11,105 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
+/* =========================================SCREEN 1======================================= */
+
 #gameboy {
     width: 100%;
     height: auto;
     border-radius: 30px;
     position: relative;
-    margin-top: 25%;
-    margin-left: 43;
+    margin-top: 3%;
+    margin-left: 35%;
 }
+
+#introtext {
+    color: black;
+    position: absolute;
+    width: 58%;
+    top: 20%;
+    right: 21%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+p {
+    font-size: 12px;
+}
+
+
+#pokeball-image {
+    width: 150px;
+    margin-right: 19px;
+}
+
+#instructions {
+    color: black;
+    position: absolute;
+    width: 31%;
+    top: 19%;
+    right: 35%;
+    text-align: center;
+}
+
+#professor-oak {
+    width: 75px;
+}
+
+#akey {
+    position: absolute;
+    height: 99px;
+    width: 102px;
+    top: 77%;
+    right: 29%;
+}
+
+#bkey {
+    position: absolute;
+    height: 99px;
+    width: 102px;
+    top: 82%;
+    right: 38%;
+}
+
+#downkey {
+    position: absolute;
+    height: 75px;
+    width: 115px;
+    top: 87%;
+    right: 59%;
+}
+
+/* --- PokeBall Animation ---- */
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .center-on-page {
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .pokeballanimate {
+    animation: shake 1.25s cubic-bezier(.36,.07,.19,.97) 3;
+  }
+  .pokeball__buttonanimate {
+    animation: blink .5s alternate 7;
+  }
+
+  @keyframes shake {
+    0 { transform: translate(0, 0) rotate(0); }
+    20% { transform: translate(-10px, 0) rotate(-20deg); }
+    30% { transform: translate(10px, 0) rotate(20deg); }
+    50% { transform: translate(-10px, 0) rotate(-10deg); }
+    60% { transform: translate(10px, 0) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
+
+/* =========================================END SCREEN 1======================================= */
