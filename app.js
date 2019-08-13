@@ -282,29 +282,6 @@ $(document).ready(function () {
 
 $("#submitButton").on("click", function () {
 
-    $("#pokeName").text(pokemonName);
-    $("#pokeImageReal").attr("src", pokemonImage);
-    $("#pokemonType").text(pokemonType);
-    $("#pokemonAbility").text(pokemonAbility);
-    $("#pokemonMoveTwo").text(pokemonMoveTwo);
-    $("#pokemonMoveOne").text(pokemonMoveOne);
-
-});
-
-//================= reset button functionality ===================
-$("#resetButton").on('click', function() {
-
-    $("#pokemonType").text("");
-    $("#pokemonAbility").text("");
-    $("#pokemonMoveOne").text("");
-    $("#pokemonMoveTwo").text("");
-    $("#pokeName").text("");
-    $("#pokeImageReal").attr("src","../Project/images/question.png");
-    $("#userImage").attr("src","../Project/images/male-profile-image-placeholder.png");
-    $("#user-image").val("");
-    $(window).scrollTop(0);
-})
-
     //Hide submit button (no more pressing)
     $("#submitButton").attr("hidden", true)
 
@@ -501,5 +478,18 @@ db.collection('pokeCount').orderBy('count','desc').limit(5).onSnapshot(snapshot 
     })
 });
 
+//================= reset button functionality ===================
+$("#resetButton").on('click', function() {
+
+    $("#pokemonType").text("");
+    $("#pokemonAbility").text("");
+    $("#pokemonMoveOne").text("");
+    $("#pokemonMoveTwo").text("");
+    $("#pokeName").text("");
+    $("#pokeImageReal").attr("src","../Project/images/question.png");
+    $("#userImage").attr("src","../Project/images/male-profile-image-placeholder.png");
+    $("#user-image").val("");
+    $(window).scrollTop(0);
+})
 
 
