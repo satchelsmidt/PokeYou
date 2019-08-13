@@ -699,5 +699,39 @@ p {
 
     }
 
-
  }
+
+ #pokeImage{
+    width: 300px;
+    height: 300px;
+    /* margin: 0 auto; */
+ }
+
+ #randBattleTable{
+    margin: 0 auto;
+    color: white;
+    background: red;
+    text-align: center;
+    border: "1|0";
+ }
+
+ #randPokeImage{
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+#userBattleTable{
+    margin: 0 auto;
+    color: white;
+    background: green;
+    text-align: center;
+    border: "1|0";
+ }
+
+ #userPokeImage{
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+

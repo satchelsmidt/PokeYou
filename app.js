@@ -55,7 +55,8 @@ AOS.init({
 //this variable will hold the output of the faceAPI call 
 //this will be a list of key/value pairs related to emotions and % of emotion detected 
 var highestEmotion = "";
-//object containing the arrays of pokemon and associated emoitons
+
+//object containing the arrays of pokemon and associated emotions
 var pokemonEmotions = {
     anger: [3, 14, 15, 18, 20, 24, 28, 29, 33, 34, 55, 56, 57, 62, 64, 65, 76, 83, 85, 100, 105, 106, 107, 115, 117, 123, 125, 127, 130, 145],
     contempt: [2, 5, 6, 7, 8, 9, 17, 38, 45, 53, 58, 59, 67, 73, 91, 96, 97, 99, 102, 126, 128, 131, 133, 134, 135, 146, 150],
@@ -65,6 +66,7 @@ var pokemonEmotions = {
     sadness: [11, 30, 44, 60, 63, 104],
     surprise: [21, 23, 31, 37, 46, 54, 69, 70, 80, 86, 90, 112, 118, 136, 144]
 }
+
 //want to display the top 5 pokemon that poeople are getting
 //this object will hold the count for each pokemon that get generated 
 //try creating an object equal to the pokemon and then giving that k/v equal to the count and the link to the sprite 
@@ -72,19 +74,15 @@ let pokeTotals = {};
 //add object {name:v,link:v}
 let pokeTotalsArray = [];
 
+//Define user returned pokemon and random returned pokemon
+var userPokemon;
+var randomPokemon;
 
-//Define pokemon features that we want to return after call (globally)
-var pokemonName;
-var pokemonImage;
-var pokemonType;
-var pokemonAbility;
-var pokemonMoveOne;
-var pokemonMoveTwo;
-
+//Pokemon List Functionality
 const pokeList = $('#top-five');
 
 //create list elements for the top 5 pokemon list 
-function renderPokemon(doc){
+function renderPokemon(doc) {
     let li = $('<li>');
     let pokeImg = $('<img>').attr('src', doc.data().link);
     let name = $('<span>').text(doc.data().name);
@@ -96,10 +94,6 @@ function renderPokemon(doc){
 
     pokeList.append(li);
 }
-
-
-
-
 
 /*=============================================
 =User image upload (POST) and faceAPI call (POST)=
@@ -142,8 +136,7 @@ $(document).ready(function () {
                 //variable that stores the url leading to the user image that was uploaded to the cloud 
                 uploadedImgLink = res.data.url;
                 //this variable holds the Face API url
-                faceURL = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=emotion&recognitionModel=recognition_01&detectionModel=detection_01"
-
+                faceURL = "https://deron.cognitiveservices.azure.com/face/v1.0/detect?returnFaceAttributes=emotion&recognitionModel=recognition_01&detectionModel=detection_01"
                 //this method is used to POST to the the Face API 
                 //this will use the FaceAPI to analyze the user image after it has been uploaded to the cloud 
                 axios({
@@ -151,7 +144,7 @@ $(document).ready(function () {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Ocp-Apim-Subscription-Key': '42bfc0fb6f98403fa3df091c5f1a4b15'
+                        'Ocp-Apim-Subscription-Key': '77c957a366ba45039501c70fa1221494'
                     },
                     data: {
                         'url': uploadedImgLink
@@ -183,80 +176,90 @@ $(document).ready(function () {
                         }
                         console.log(highestEmotion);
 
-
                         //this variable will hold the array related to the pokemon with the assocted with the highest valued emotion
-                        var choosenArray = pokemonEmotions[highestEmotion];
+                        var chosenArray = pokemonEmotions[highestEmotion];
 
                         //generate a random number based on the length of the pokeArray related to the highest valued emotion
-                        var randomNumber = Math.floor(Math.random() * choosenArray.length);
+                        var randomNumber = Math.floor(Math.random() * chosenArray.length);
 
                         //should be a random number from the array 
-                        var choosenPokemon = choosenArray[randomNumber];
+                        var userChosenPokemon = chosenArray[randomNumber];
 
-                        var queryURL1 = "https://pokeapi.co/api/v2/pokemon/" + choosenPokemon + "/"
-                        //async call to the pokemonAPI
-                        //should return just one pokemon 
-                        //store relevaent imformation with future variables 
+                        var queryURL1 = "https://pokeapi.co/api/v2/pokemon/" + userChosenPokemon + "/"
+                        //async call to the pokemonAPI, should return just one pokemon 
+                        //store relevant imformation with future variables 
                         $.ajax({
                             url: queryURL1,
                             method: 'GET'
                         }).then(function (res3) {
-                            //Return pokemon name
+                            ///////////////Pokemon Data Returned (Object format)/////////////////////
+                            userPokemon = {
+                                pokemonName: res3.name,
+                                pokemonImage: res3.sprites.front_default,
+                                pokemonAbility: res3.abilities[Math.floor(Math.random() * res3.abilities.length)].ability.name,
+                                pokemonType: res3.types[Math.floor(Math.random() * res3.types.length)].type.name,
+                                pokemonMoveOne: res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name,
+                                pokemonMoveTwo: res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name,
+                                pokemonHealth: 100 + (Math.floor(Math.random() * 100)),
+                                pokemonMoveOneDmg: 10 + (Math.floor(Math.random() * 15)),
+                                pokemonMoveTwoDmg: 50 + (Math.floor(Math.random() * 50)),
+                                damageReceived: 10 + (Math.floor(Math.random() * 90))
+                            }
 
-                            pokemonName = res3.name
-                            console.log(pokemonName);
-                            //return pokemon image
+                            console.log("USER POKE: ", userPokemon)
 
-                            pokemonImage = res3.sprites.front_default
-                            // console.log(pokemonImage);
-                            //return random pokemon ability
+                            ///////Random Pokemon data is defined (pick random num from 1 - 150)
+                            var randomPokemonNum = Math.floor(Math.random() * 150)
+                            var randomUrl = "https://pokeapi.co/api/v2/pokemon/" + randomPokemonNum + "/"
 
-                            pokemonAbility = res3.abilities[Math.floor(Math.random() * res3.abilities.length)].ability.name
-                            // console.log(pokemonAbility);
-                            //Return pokemon type (only one, if two types)
+                            $.ajax({
+                                url: randomUrl,
+                                method: 'GET'
+                            }).then(function (randResponse) {
 
-                            pokemonType = res3.types[Math.floor(Math.random() * res3.types.length)].type.name
-                            // console.log(pokemonType);
-                            //return two random pokemon moves
+                                /////////////////////////Random Pokemon Data Returned///////////////////////////
+                                randomPokemon = {
+                                    pokemonName: randResponse.name,
+                                    pokemonImage: randResponse.sprites.front_default,
+                                    pokemonAbility: randResponse.abilities[Math.floor(Math.random() * randResponse.abilities.length)].ability.name,
+                                    pokemonType: randResponse.types[Math.floor(Math.random() * randResponse.types.length)].type.name,
+                                    pokemonMoveOne: randResponse.moves[Math.floor(Math.random() * randResponse.moves.length)].move.name,
+                                    pokemonMoveTwo: randResponse.moves[Math.floor(Math.random() * randResponse.moves.length)].move.name,
+                                    pokemonHealth: 100 + (Math.floor(Math.random() * 100))
+                                }
 
-                            pokemonMoveOne = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
-                            // console.log(pokemonMoveOne);
+                                console.log("THIS IS A RANDOM POKEMON: ", randomPokemon)
 
-                            pokemonMoveTwo = res3.moves[Math.floor(Math.random() * res3.moves.length)].move.name
-                            // console.log(pokemonMoveTwo);
+                            });
 
                             //FIREBASE
                             ///add pokemon to firebase
-                            db.collection('pokeCount').doc(res3.name).get().then((snapshot) => {
+                            db.collection('pokeCount').doc(userPokemon.pokemonName).get().then((snapshot) => {
                                 //if pokemon is not in the database add it
                                 if (snapshot.data() === undefined) {
-                                    db.collection('pokeCount').doc(res3.name).set({
-                                        name: res3.name,
-                                        link: res3.sprites.front_default,
+                                    db.collection('pokeCount').doc(userPokemon.pokemonName).set({
+                                        name: userPokemon.pokemonName,
+                                        link: userPokemon.pokemonImage,
                                         count: 1,
                                     });
                                 }
                                 //if pokemon is in the database, increase the count 
                                 else {
-                                    db.collection('pokeCount').doc(res3.name).update({
-                                        count: snapshot.data().count+1,
+                                    db.collection('pokeCount').doc(userPokemon.pokemonName).update({
+                                        count: snapshot.data().count + 1,
                                     });
                                 }
                             })
 
                             //set the meta tag which represents the image when shared to facebook
-                            $("#facebook-img").attr("content", res3.sprites.front_default);
-                            $("#twitter-link").attr("data-url", res3.sprites.front_default);
+                            $("#facebook-img").attr("content", userPokemon.pokemonImage);
+                            $("#twitter-link").attr("data-url", userPokemon.pokemonImage);
 
-                        }).catch(function (err3) {
-
-                            console.error(err2);
-                        }).catch(function (err3) { //Error catching ////////////////////////////////////
-
+                        }).catch(function (err3) { ////BEGIN ERROR CATCHING /////////////////////////////////
                             console.error(err3);
                         })
                     })
-                    
+
                     //returns a Promise and deals with rejected cases 
                     .catch(function (err2) {
                         console.error(err2);
@@ -264,7 +267,7 @@ $(document).ready(function () {
                         $("#modal").show();
 
                         //close modal when X is clicked
-                        $(".close").on("click", function() {
+                        $(".close").on("click", function () {
                             $("#modal").hide();
 
                         });
@@ -272,20 +275,198 @@ $(document).ready(function () {
             })
             .catch(function (err) {
                 console.error(err);
-            }); // End of error catching ////////////////////////////////////////////////
-
+            });
+        // End of error catching ////////////////////////////////////////////////
     });
 });
 
 $("#submitButton").on("click", function () {
 
-    $("#pokeName").text(pokemonName)
-    $("#pokeImageReal").attr("src", pokemonImage)
-    $("#pokemonType").text(pokemonType)
-    $("#pokemonAbility").text(pokemonAbility)
-    $("#pokemonMoveTwo").text(pokemonMoveTwo)
-    $("#pokemonMoveOne").text(pokemonMoveOne)
+    //Hide submit button (no more pressing)
+    $("#submitButton").attr("hidden", true)
 
+    //Generate User Pokemon Card
+    $("#pokeName").text(userPokemon.pokemonName)
+    $("#pokeImageReal").attr("src", userPokemon.pokemonImage)
+    $("#pokemonType").text(userPokemon.pokemonType)
+    $("#pokemonAbility").text(userPokemon.pokemonAbility)
+    $("#pokemonMoveTwo").text(userPokemon.pokemonMoveTwo)
+    $("#pokemonMoveOne").text(userPokemon.pokemonMoveOne)
+
+    //Make 'Battle Button' appear as an option
+    $("#battleButton").attr("hidden", false)
+
+});
+
+//Define music vars
+let battleMusic = document.getElementById("battleMusic")
+let victoryMusic = document.getElementById("victoryMusic")
+let failureMusic = document.getElementById("failureMusic")
+
+
+//Function that runs when battle button is clicked (BATTLE ZONE)
+$("#battleButton").on("click", function () {
+
+    //Hide battle button so people can't keep clicking it
+    $("#battleButton").attr("hidden", true)
+
+    //Play battle music
+    battleMusic.play()
+
+    /////////////////// APPEND HELLA THINGS TO CREATE USER CARD //////////////////////////////
+    $("#battleRow").attr("hidden", false)
+
+    var userBattleTable = $("<table class='table'>")
+    userBattleTable.attr("id", "userBattleTable")
+
+    var userBattleRowOne = $("<tr>")
+    var userBattleMoveTitleOne = $("<th>Move Two<th>")
+    var userBattleMoveTitleTwo = $("<th>Move One<th>")
+
+    userBattleRowOne.append(userBattleMoveTitleOne)
+    userBattleRowOne.append(userBattleMoveTitleTwo)
+
+    var userBattleRowTwo = $("<tr>")
+    var userBattleMoveOne = $("<td>" + userPokemon.pokemonMoveOne + "<td>")
+    var userBattleMoveTwo = $("<td>" + userPokemon.pokemonMoveTwo + "<td>")
+
+    userBattleRowTwo.append(userBattleMoveOne)
+    userBattleRowTwo.append(userBattleMoveTwo)
+
+    var userBattleRowThree = $("<tr>")
+    var userBattleButtonOne = $("<td>" + "<input type='submit' value='Attack 1' id='userAttackOne'>" + "<td>")
+    var userBattleButtonTwo = $("<td>" + "<input type='submit' value='Attack 2' id='userAttackTwo'>" + "<td>")
+
+    userBattleRowThree.append(userBattleButtonOne)
+    userBattleRowThree.append(userBattleButtonTwo)
+
+    userBattleTable.append(userBattleRowOne)
+    userBattleTable.append(userBattleRowTwo)
+    userBattleTable.append(userBattleRowThree)
+
+    $("#userPokeBattle").append($("<img src=" + userPokemon.pokemonImage + " id='userPokeImage'>"))
+    $("#userPokeBattle").append($("<h1 id='userHealth'>Health: " + userPokemon.pokemonHealth + "<h1>"))
+    $("#userPokeBattle").append(userBattleTable)
+
+    /////////////////// APPEND HELLA THINGS TO CREATE random CARD //////////////////////////////
+    var randBattleTable = $("<table class='table'>")
+    randBattleTable.attr("id", "randBattleTable")
+
+    var randBattleRowOne = $("<tr>")
+    var randBattleMoveTitleOne = $("<th>Move Two<th>")
+    var randBattleMoveTitleTwo = $("<th>Move One<th>")
+
+    randBattleRowOne.append(randBattleMoveTitleOne)
+    randBattleRowOne.append(randBattleMoveTitleTwo)
+
+    var randBattleRowTwo = $("<tr>")
+    var randBattleMoveOne = $("<td>" + randomPokemon.pokemonMoveOne + "<td>")
+    var randBattleMoveTwo = $("<td>" + randomPokemon.pokemonMoveTwo + "<td>")
+
+    randBattleRowTwo.append(randBattleMoveOne)
+    randBattleRowTwo.append(randBattleMoveTwo)
+
+    randBattleTable.append(randBattleRowOne)
+    randBattleTable.append(randBattleRowTwo)
+
+    $("#randPokeBattle").append($("<img src=" + randomPokemon.pokemonImage + " id='randPokeImage'>"))
+    $("#randPokeBattle").append($("<h1 id='enemyHealth'>Health: " + randomPokemon.pokemonHealth + "<h1>"))
+    $("#randPokeBattle").append(randBattleTable)
+})
+
+//Variable to keep track of move two uses
+var count = 2;
+
+//Add in functionality of first user attack (event listener for dynamically created elements)
+document.addEventListener("click", function (e) {
+
+    if (e.target && e.target.id == 'userAttackOne') {
+
+        //Hide wait text if it is shown
+        $("#waitText").attr('hidden', true)
+
+        //check if user health is < 0, if it is don't run the function
+        if (userPokemon.pokemonHealth <= 0) {
+            return
+        };
+
+        //Do damage to enemy
+        randomPokemon.pokemonHealth = randomPokemon.pokemonHealth - userPokemon.pokemonMoveOneDmg;
+        $("#enemyHealth").text("Health: " + randomPokemon.pokemonHealth);
+        //increase turn count
+        count = count + 1;
+
+        //check to see if enemy dead, if dead do win things and end function
+        if (randomPokemon.pokemonHealth <= 0) {
+            $("#randPokeBattle").empty();
+            $("#randPokeBattle").append($("<h1>YOU WIN!!!!!!!!</h1>"));
+            battleMusic.pause();
+            victoryMusic.play();
+            $("#waitText").attr('hidden', true);
+            return
+        }
+
+        //Do return damage to user
+        userPokemon.pokemonHealth = userPokemon.pokemonHealth - userPokemon.damageReceived;
+        $("#userHealth").text("Health: " + userPokemon.pokemonHealth);
+
+        //Check to see if user dead, if dead do lose things
+        if (userPokemon.pokemonHealth <= 0) {
+            $("#userPokeBattle").empty();
+            $("#userPokeBattle").append($("<h1>YOU LOSE!!!!!!!!</h1>"));
+            battleMusic.pause();
+            failureMusic.play();
+            $("#waitText").attr('hidden', true);
+        }
+
+    }
+});
+
+//Add in functionality of second user attack (event listener for dynamically created elements)
+document.addEventListener("click", function (e) {
+
+    if (e.target && e.target.id == 'userAttackTwo') {
+        if (count >= 2) {
+
+            //Hide wait text if it is shown
+            $("#waitText").attr('hidden', true)
+
+            //check if user health is < 0, if it is don't run the function
+            if (userPokemon.pokemonHealth <= 0) {
+                return
+            }
+
+            //Do damage to enemy
+            randomPokemon.pokemonHealth = randomPokemon.pokemonHealth - userPokemon.pokemonMoveTwoDmg;
+            $("#enemyHealth").text("Health: " + randomPokemon.pokemonHealth)
+            //Reset count
+            count = 0;
+
+            //check to see if enemy dead, if dead do win things and end function
+            if (randomPokemon.pokemonHealth <= 0) {
+                $("#randPokeBattle").empty();
+                $("#randPokeBattle").append($("<h1>YOU WIN!!!!!!!!</h1>"))
+                $("#waitText").attr('hidden', true)
+                return
+            }
+
+            //Do return damage to user
+            userPokemon.pokemonHealth = userPokemon.pokemonHealth - userPokemon.damageReceived
+            $("#userHealth").text("Health: " + userPokemon.pokemonHealth)
+
+            //Check to see if user dead, if dead do lose things
+            if (userPokemon.pokemonHealth <= 0) {
+                $("#userPokeBattle").empty();
+                $("#userPokeBattle").append($("<h1>YOU LOSE!!!!!!!!</h1>"))
+                $("#waitText").attr('hidden', true)
+            }
+
+        }
+        else {
+            $("#userPokeBattle").append($("<p id='waitText'>(Must wait 2 turns before using)</p>"))
+            return
+        }
+    }
 });
 
 db.collection('pokeCount').orderBy('count','desc').limit(5).onSnapshot(snapshot => {
