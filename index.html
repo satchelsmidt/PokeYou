@@ -11,8 +11,6 @@
         content="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" />
     <title>PokeYou</title>
 
-
-
     <!-- CSS Reset -->
     <link href="reset.css" rel="stylesheet">
 
@@ -31,6 +29,9 @@
 
     <!-- AOS Library JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
 
 </head>
 
@@ -47,15 +48,21 @@
             <div class="col font" id="introtext">
                 <h1>PokeYou!</h1>
                 <p>Click "A" to get started...</p>
+                <div class="center-on-page">
+                    <div class="pokeball">
+                        <img id="pokeball-image" src="images/pokeball.png" alt="pokeball">
+                    </div>
+                </div>
             </div>
             <div class="col font" id="instructions">
+                <div id="profOak">
+                    <img src="images/Prof-Oak.png" alt="professor oak"></div>
                 <p>My name is Profressor Oak! Instruction text here blah blah blah<br>
 
                     Press the down arrow</p>
-                <!-- <div id="profOak"><img
-                    src="../Prof Oak.png"></div>                 -->
             </div>
             <div class="col" id="akey"></div>
+            <div class="col" id="bkey"></div>
             <div class="col" id="downkey"></div>
         </div>
     </div>
@@ -84,6 +91,15 @@
                     <button type="button" id="submitButton">Which Pokemon am I?</button>
                 </div>
             </div>
+            <!-- Error card when the Face API fails -->
+            <div id="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h1>Team Rocket strikes again!</h1>
+                    <img src="images/teamrocket.jpg" id="teamRocket">
+                    <h6>Upload a new image and try again. Remember image files only!</h6>
+                </div>
+            </div>
         </div>
 
         <!-- Pokemon results card -->
@@ -93,16 +109,17 @@
                 <div class="card-body" id="User-Image-Container">
                     <h5 class="card-title">Pokemon card:</h5>
                     <!-- Display Poke -->
-                    <p id="Test-Image-Container test-image"></p>
+
+                    <!-- <p id="Test-Image-Container test-image"></p> -->
+
                     <div id="pokeImage"><img id="pokeImageReal" src="../Project/images/question.png"></div>
                     <!-- Name and Stats display -->
                     <div id="table-container">
                         <table style="width:100%">
-
                             <h4 id="pokeName">Pokemon Name</h4>
 
-    
-                            <tr>
+                            <!-- Row One Begin -->
+                            <tr id="userRowOne">
                                 <td class="roundy" colspan="2" style="background: #FFFFFF;">
                                     <table class="roundy" width="100%" style="background: #FFFFFF;">
                                         <tbody>
@@ -114,8 +131,9 @@
                                                         cellspacing="1" cellpadding="3">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" style="text-align: center;">Type
-                                                                </td>
+                                                                <th colspan="2" style="text-align: center;">
+                                                                    <strong>Type</strong>
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2" id="pokemonType"
@@ -133,8 +151,9 @@
                                                         cellspacing="1" cellpadding="3">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" style="text-align: center;">Ability
-                                                                </td>
+                                                                <th colspan="2" style="text-align: center;">
+                                                                    <strong>Ability</strong>
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2" id="pokemonAbility"
@@ -150,8 +169,10 @@
                                     </table>
                                 </td>
                             </tr>
+                            <!-- Row One End -->
 
-                            <tr>
+                            <!-- Row Two Begin -->
+                            <tr id="userRowTwo">
                                 <td class="roundy" colspan="2" style="background: #FFFFFF;">
                                     <table class="roundy" width="100%" style="background: #FFFFFF;">
                                         <tbody>
@@ -163,8 +184,9 @@
                                                         cellspacing="1" cellpadding="3">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" style="text-align: center;">Move One
-                                                                </td>
+                                                                <th colspan="2" style="text-align: center;"><strong>Move
+                                                                        One</strong>
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2" id="pokemonMoveOne"
@@ -183,8 +205,9 @@
                                                         cellspacing="1" cellpadding="3">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" style="text-align: center;">Move Two
-                                                                </td>
+                                                                <th colspan="2" style="text-align: center;"><strong>Move
+                                                                        Two</strong>
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2" id="pokemonMoveTwo"
@@ -200,9 +223,18 @@
                                     </table>
                                 </td>
                             </tr>
+                            <!-- Row Two End -->
+
                         </table>
                     </div>
                     <!-- Facebook sharing button -->
+                    <!-- <div class="fb-share-button" style="padding-left: 110px"
+                        data-href="https://satchelsmidt.github.io/Project" data-layout="button_count">
+                </div>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" id="twitter-link"
+                    data-text="I found my inner Pokemon!" data-hashtags="pokemon" data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
                     <!-- <div class="fb-share-button" style="padding-left: 110px"
                         data-href="https://satchelsmidt.github.io/Project" data-layout="button_count">
                     </div>
@@ -213,8 +245,38 @@
 
                 </div>
             </div>
+
+            <!-----------------------------------------     BATTLE ZONE  --------------------------------------------------->
+            <div class="container">
+
+                <audio id="battleMusic" src="images/24 Battle (VS Wild Pokemon).mp3"></audio>
+                <audio id="victoryMusic" src="images/129-victory (vs gym leader).mp3"></audio>
+                <audio id="failureMusic" src="images/Sad Trombone Sound Effect  Wah Wah Wah FAIL Sound  Fail Horns.mp3"></audio>
+
+
+                <input type="submit" value="Begin the BATTLE" id="battleButton" hidden="true">
+
+                <div class="row" id="battleRow" hidden="true">
+
+                    <div class="col-2"></div>
+
+                    <div class="card col-3" id="userPokeBattle"></div>
+
+                    <div class="col-2"></div>
+
+                    <div class="card col-3" id="randPokeBattle"></div>
+
+                    <div class="col-2"></div>
+
+                </div>
+                <!-----------------------------------------END BATTLE ZONE ------------------------------------------->
+
+            </div>
+            <!-- Top 5 pokemon -->
+            <ul id="top-five">
+                <li>Top 5 Pokemon!!!</li>
+            </ul>
         </div>
-    </div>
 
     <!-- Adding the image reset button -->
     <div id="Reset-Button-Container">
@@ -222,12 +284,28 @@
         <input type="reset" id="resetButton" value="reset"></input>
     </div>
 
-
-    <div id="fb-root"></div>
+        <!-- <div id="fb-root"></div> -->
 
     </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
 
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDZEtfycw-tvxrYa5XG6gUJqUeeAaIRm34",
+            authDomain: "poke-you.firebaseapp.com",
+            databaseURL: "https://poke-you.firebaseio.com",
+            projectId: "poke-you",
+            storageBucket: "poke-you.appspot.com",
+            messagingSenderId: "525511482555",
+            appId: "1:525511482555:web:700ad5e389b5c58d"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
 
+    <div id="fb-root"></div>
     <!-- <div id="pokeImage"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div> -->
     <!-- Facebook sharing script -->
     <!-- <script>(function (d, s, id) {
@@ -238,13 +316,13 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script> -->
 
-
+    <!-- jquery  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Promise based HTTP client for the browser and node.js -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- App script -->
     <script type="text/javascript" src="app.js"></script>
-
-
 </body>
 
 </html>
