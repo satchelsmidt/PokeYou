@@ -1,5 +1,7 @@
 body {
-    background-image: url(images/dark-honeycomb/dark-honeycomb.png);
+    background: url(images/ashbackground.png);
+    background: cover;
+    background-attachment: fixed;
     margin: 0 auto;
 }
 ul{
@@ -68,7 +70,7 @@ li img {
     color: black;
     position: absolute;
     width: 61%;
-    top: 26%;
+    top: 5%;
     right: 11%;
     text-align: center;
 }
@@ -85,12 +87,23 @@ p {
     color: black;
     position: absolute;
     width: 61%;
-    top: 29%;
+    top: 13%;
     right: 12%;
     text-align: center;
 }
 
 #akey {
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    position: absolute;
+    height: 75px;
+    width: 61px;
+    top: 61%;
+    right: 1%;
+}
+
+#bkey {
     border-style: solid;
     border-color: white;
     border-width: 3px;
@@ -111,6 +124,41 @@ p {
     top: 69%;
     right: 54%;
 }
+
+/* ====== POKE BALL ANIMATION ======== */
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .center-on-page {
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  /* Poké Styles */
+
+  .pokeballanimate {
+    animation: shake 1.25s cubic-bezier(.36,.07,.19,.97) 3;
+  }
+  .pokeball__buttonanimate {
+    animation: blink .5s alternate 7;
+  }
+
+  /* Animation */
+
+  @keyframes shake {
+    0 { transform: translate(0, 0) rotate(0); }
+    20% { transform: translate(-10px, 0) rotate(-20deg); }
+    30% { transform: translate(10px, 0) rotate(20deg); }
+    50% { transform: translate(-10px, 0) rotate(-10deg); }
+    60% { transform: translate(10px, 0) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
+
+  /* =========== END ANIMATION ============= */
 
 .screentwo {
     margin-left: 8%;
