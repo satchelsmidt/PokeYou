@@ -45,7 +45,7 @@
             </div>
             <div class="col font" id="introtext">
                 <h1>PokeYou!</h1>
-                <p>Click "A" to get started...</p>
+                <p id="instructionText">Click "A" to get started...</p>
                 <div class="center-on-page">
                     <div class="pokeball">
                         <img id="pokeball-image" src="images/pokeball.png" alt="pokeball">
@@ -69,32 +69,37 @@
     <div class="container">
 
         <!-- BEGINNING OF INPUT AND POKEMON ROW -->
-        <div class="row screentwo" id="upload">
+        <div class="row screentwo" >
 
             <!-- IMAGE INPUT CARD -->
-            <div class="card col-xs-1 col-sm-1 col-md-4 col-lg-4 col-xl-4 cardOne" data-aos="flip-down"
-                id="User-Image-Container" style="width: 18rem;">
+            <div class="card col-4 cardOne font" id="User-Image-Container">
                 <div class="card-body">
-                    <h5 class="card-title">Upload your photo below:</h5>
+                    <p class="card-title">Upload photo below</p>
+                    <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
                     <div id="userImageHolder">
                         <img id="userImage" src="../Project/images/male-profile-image-placeholder.png"
                             alt="placeholder user image">
                     </div>
-                    <input type="file" id="user-image" name="image" accept="image/png, image/jpeg">
+                    
                 </div>
 
                 <!-- Adding the image submit button -->
                 <div id="Button-Container">
                     <!-- ADDED ID FOR SUBMIT BUTTON -->
-                    <button type="button" id="submitButton">Which Pokemon am I?</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="submitButton">Search Pokemon!</button>
                 </div>
 
             </div>
             <!-- END OF IMAGE INPUT CARD -->
 
+            <!-- empty div -->
+            <div class="col-3">
+                    <p></p>
+                </div>
+
             <!-- Error card when the Face API fails -->
             <div id="modal">
-                <div class="modal-content">
+                <div class="modal-content font">
                     <span class="close">&times;</span>
                     <h1>Team Rocket strikes again!</h1>
                     <img src="images/teamrocket.jpg" id="teamRocket">
@@ -103,139 +108,136 @@
             </div>
             <!-- END OF ERROR CARD -->
 
-            <!-- Pokemon results card (MAYBE GET RID OF ROW PROPERTY FOR THIS DIV?) -->
-            <div class="row screentwo" id="results">
+            <!-- Pokemon results card -->
+            <div class="card col-4 cardTwo font" id="results">
 
-                <div class="card col-xs-1 col-sm-1 col-md-4 col-lg-4 col-xl-4 cardOne" data-aos="flip-down"
-                    id="User-Image-Container" style="width: 18rem;">
+                <div class="card-body">
 
-                    <div class="card-body" id="User-Image-Container">
-                        <h5 class="card-title">Pokemon card:</h5>
+                    <!-- Display Poke Name -->
+                    <h4 id="pokeName"></h4>
 
-                        <!-- Display Poke -->
-                        <div id="pokeImage"><img id="pokeImageReal" src="../Project/images/question.png"></div>
+                    <!-- Display Poke -->
+                    <div id="pokeImage"><img id="pokeImageReal"></div>
 
-                        <!-- Name and Stats display -->
-                        <div id="table-container">
-                            <table style="width:100%">
-                                <h4 id="pokeName">Pokemon Name</h4>
+                    <!-- Stats display -->
+                    <div id="table-container">
+                        <table style="width:100%">
+                            
+                            <!-- Row One Begin -->
+                            <tr id="userRowOne">
+                                <td class="roundy" colspan="2" style="background: #FFFFFF;">
+                                    <table class="roundy" width="100%" style="background: #FFFFFF;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="roundy" width="50%"
+                                                    style="background: #6D6D4E; border: 2px solid #6D6D4E">
+                                                    <table class="roundy" width="100%"
+                                                        style="background: #FFFFFF; border-collapse:collapse;"
+                                                        cellspacing="1" cellpadding="3">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th colspan="2" style="text-align: center;">
+                                                                    <strong>Type</strong>
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" id="pokemonType"
+                                                                    style="background: #A8A878; border: 1px solid; text-align: center;">
+                                                                    ___
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
 
-                                <!-- Row One Begin -->
-                                <tr id="userRowOne">
-                                    <td class="roundy" colspan="2" style="background: #FFFFFF;">
-                                        <table class="roundy" width="100%" style="background: #FFFFFF;">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="roundy" width="50%"
-                                                        style="background: #6D6D4E; border: 2px solid #6D6D4E">
-                                                        <table class="roundy" width="100%"
-                                                            style="background: #FFFFFF; border-collapse:collapse;"
-                                                            cellspacing="1" cellpadding="3">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th colspan="2" style="text-align: center;">
-                                                                        <strong>Type</strong>
-                                                                    </th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" id="pokemonType"
-                                                                        style="background: #A8A878; border: 1px solid; text-align: center;">
-                                                                        ___
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
+                                                <td class="roundy" width="50%"
+                                                    style="background: #6D6D4E; border: 2px solid #6D6D4E">
+                                                    <table class="roundy" width="100%"
+                                                        style="background: #FFFFFF; border-collapse:collapse;"
+                                                        cellspacing="1" cellpadding="3">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th colspan="2" style="text-align: center;">
+                                                                    <strong>Ability</strong>
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" id="pokemonAbility"
+                                                                    style="background: #A8A878; border: 1px solid; text-align: center;">
+                                                                    ___
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- Row One End -->
 
-                                                    <td class="roundy" width="50%"
-                                                        style="background: #6D6D4E; border: 2px solid #6D6D4E">
-                                                        <table class="roundy" width="100%"
-                                                            style="background: #FFFFFF; border-collapse:collapse;"
-                                                            cellspacing="1" cellpadding="3">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th colspan="2" style="text-align: center;">
-                                                                        <strong>Ability</strong>
-                                                                    </th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" id="pokemonAbility"
-                                                                        style="background: #A8A878; border: 1px solid; text-align: center;">
-                                                                        ___
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <!-- Row One End -->
+                            <!-- Row Two Begin -->
+                            <tr id="userRowTwo">
+                                <td class="roundy" colspan="2" style="background: #FFFFFF;">
+                                    <table class="roundy" width="100%" style="background: #FFFFFF;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="roundy" width="50%"
+                                                    style="background: #6D6D4E; border: 2px solid #6D6D4E">
+                                                    <table class="roundy" width="100%"
+                                                        style="background: #FFFFFF; border-collapse:collapse;"
+                                                        cellspacing="1" cellpadding="3">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th colspan="2" style="text-align: center;">
+                                                                    <strong>Move
+                                                                        One</strong>
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" id="pokemonMoveOne"
+                                                                    style="background: #A8A878; border: 1px solid; text-align: center;">
+                                                                    ___
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
 
-                                <!-- Row Two Begin -->
-                                <tr id="userRowTwo">
-                                    <td class="roundy" colspan="2" style="background: #FFFFFF;">
-                                        <table class="roundy" width="100%" style="background: #FFFFFF;">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="roundy" width="50%"
-                                                        style="background: #6D6D4E; border: 2px solid #6D6D4E">
-                                                        <table class="roundy" width="100%"
-                                                            style="background: #FFFFFF; border-collapse:collapse;"
-                                                            cellspacing="1" cellpadding="3">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th colspan="2" style="text-align: center;">
-                                                                        <strong>Move
-                                                                            One</strong>
-                                                                    </th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" id="pokemonMoveOne"
-                                                                        style="background: #A8A878; border: 1px solid; text-align: center;">
-                                                                        ___
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
+                                                <td class="roundy" width="50%"
+                                                    style="background: #6D6D4E; border: 2px solid #6D6D4E">
+                                                    <table class="roundy" width="100%"
+                                                        style="background: #FFFFFF; border-collapse:collapse;"
+                                                        cellspacing="1" cellpadding="3">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th colspan="2" style="text-align: center;">
+                                                                    <strong>Move
+                                                                        Two</strong>
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" id="pokemonMoveTwo"
+                                                                    style="background: #A8A878; border: 1px solid; text-align: center;">
+                                                                    ___
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- Row Two End -->
 
-                                                    <td class="roundy" width="50%"
-                                                        style="background: #6D6D4E; border: 2px solid #6D6D4E">
-                                                        <table class="roundy" width="100%"
-                                                            style="background: #FFFFFF; border-collapse:collapse;"
-                                                            cellspacing="1" cellpadding="3">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th colspan="2" style="text-align: center;">
-                                                                        <strong>Move
-                                                                            Two</strong>
-                                                                    </th>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" id="pokemonMoveTwo"
-                                                                        style="background: #A8A878; border: 1px solid; text-align: center;">
-                                                                        ___
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <!-- Row Two End -->
+                        </table>
 
-                            </table>
+                        <!-- Poke Button -->
+                        <input type="submit" value="Begin the BATTLE" class="btn btn-primary btn-sm" id="battleButton" hidden="true">
 
-                            <!-- Poke Button -->
-                            <input type="submit" value="Begin the BATTLE" id="battleButton" hidden="true">
-
-                        </div>
                     </div>
                 </div>
             </div>

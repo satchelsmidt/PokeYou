@@ -35,7 +35,7 @@ h1 {
     font-size: 45px;
 }
 
-p {
+#instructionText {
     font-size: 12px;
 }
 
@@ -113,3 +113,85 @@ p {
   }
 
 /* =========================================END SCREEN 1======================================= */
+
+/* =========================================SCREEN 2======================================= */
+
+.screentwo {
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.cardOne {
+    height: 475px;
+    border-style: solid;
+    border-color: gold;
+    border-width: 10px;
+    border-radius: 30px;
+    background: lightgoldenrodyellow;
+}
+
+.cardTwo {
+    border-style: solid;
+    border-color: gold;
+    border-width: 10px;
+    border-radius: 30px;
+}
+
+#userImage {
+    width: 200px;
+    height: 200px;
+}
+
+.card-body {
+    padding: 10px 2px 2px 2px;
+}
+
+.card-title {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#user-image {
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+
+#userImageHolder {
+    margin-left: 15%;
+}
+
+#submitButton {
+    background: black;
+    color: white;
+    border-color: black;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+
+#pokeName {
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: 10%;
+
+}
+
+#pokeImageReal {
+    width: 80%;
+    margin-left: 10%;
+}
+
+#table-container {
+    font-size: 10px;
+    overflow: auto;
+}
+
+#battleButton {
+    background: black;
+    color: white;
+    border-color: black;
+    margin-top: 5%;
+    margin-left: 25px;
+    padding: 15px;
+}
