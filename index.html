@@ -11,8 +11,6 @@
         content="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" />
     <title>PokeYou</title>
 
-
-
     <!-- CSS Reset -->
     <link href="reset.css" rel="stylesheet">
 
@@ -93,19 +91,17 @@
                 <div class="card-body" id="User-Image-Container">
                     <h5 class="card-title">Pokemon card:</h5>
                     <!-- Display Poke -->
-                    <p id="Test-Image-Container test-image"></p>
+
+                    <!-- <p id="Test-Image-Container test-image"></p> -->
+
                     <div id="pokeImage"><img id="pokeImageReal" src="../Project/images/question.png"></div>
                     <!-- Name and Stats display -->
                     <div id="table-container">
                         <table style="width:100%">
-
                             <h4 id="pokeName">Pokemon Name</h4>
 
-                            <tr>
-                                <td>Type:</td>
-                                <td align="center">Type goes here</td>
-                            </tr>
-                            <tr>
+                            <!-- Row One Begin -->
+                            <tr id="userRowOne">
                                 <td class="roundy" colspan="2" style="background: #FFFFFF;">
                                     <table class="roundy" width="100%" style="background: #FFFFFF;">
                                         <tbody>
@@ -117,8 +113,9 @@
                                                         cellspacing="1" cellpadding="3">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" style="text-align: center;">Type
-                                                                </td>
+                                                                <th colspan="2" style="text-align: center;">
+                                                                    <strong>Type</strong>
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2" id="pokemonType"
@@ -137,8 +134,9 @@
                                                         cellspacing="1" cellpadding="3">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" style="text-align: center;">Ability
-                                                                </td>
+                                                                <th colspan="2" style="text-align: center;">
+                                                                    <strong>Ability</strong>
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2" id="pokemonAbility"
@@ -154,8 +152,10 @@
                                     </table>
                                 </td>
                             </tr>
+                            <!-- Row One End -->
 
-                            <tr>
+                            <!-- Row Two Begin -->
+                            <tr id="userRowTwo">
                                 <td class="roundy" colspan="2" style="background: #FFFFFF;">
                                     <table class="roundy" width="100%" style="background: #FFFFFF;">
                                         <tbody>
@@ -167,8 +167,9 @@
                                                         cellspacing="1" cellpadding="3">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" style="text-align: center;">Move One
-                                                                </td>
+                                                                <th colspan="2" style="text-align: center;"><strong>Move
+                                                                        One</strong>
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2" id="pokemonMoveOne"
@@ -187,8 +188,9 @@
                                                         cellspacing="1" cellpadding="3">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" style="text-align: center;">Move Two
-                                                                </td>
+                                                                <th colspan="2" style="text-align: center;"><strong>Move
+                                                                        Two</strong>
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2" id="pokemonMoveTwo"
@@ -204,6 +206,8 @@
                                     </table>
                                 </td>
                             </tr>
+                            <!-- Row Two End -->
+
                         </table>
                     </div>
                     <!-- Facebook sharing button -->
@@ -220,11 +224,34 @@
         </div>
     </div>
 
-    <div id="fb-root"></div>
+    <!-----------------------------------------     BATTLE ZONE  --------------------------------------------------->
+
+    <div class="container">
+
+        <audio id="battleMusic" src="images/24 Battle (VS Wild Pokemon).mp3"></audio>
+
+        <input type="submit" value="Begin the BATTLE" id="battleButton" hidden="true">
+
+        <div class="row" id="battleRow" hidden="true">
+
+            <div class="col-2"></div>
+
+            <div class="card col-3" id="userPokeBattle"></div>
+
+            <div class="col-2"></div>
+
+            <div class="card col-3" id="randPokeBattle"></div>
+
+            <div class="col-2"></div>
+
+        </div>
 
     </div>
 
 
+    <!-----------------------------------------END BATTLE ZONE ------------------------------------------->
+
+    <div id="fb-root"></div>
     <!-- <div id="pokeImage"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"></div> -->
     <!-- Facebook sharing script -->
     <!-- <script>(function (d, s, id) {
