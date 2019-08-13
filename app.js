@@ -483,7 +483,6 @@ db.collection('pokeCount').orderBy('count','desc').limit(5).onSnapshot(snapshot 
 
 //================= reset button functionality ===================
 $("#resetButton").on('click', function() {
-<<<<<<< HEAD
 
     $("#pokemonType").text("");
     $("#pokemonAbility").text("");
@@ -495,7 +494,5 @@ $("#resetButton").on('click', function() {
     $("#user-image").val("");
     $(window).scrollTop(0);
 })
-=======
->>>>>>> fe6cc8b565515badc1b56ffc4dfdd75b0d778657
 
 
