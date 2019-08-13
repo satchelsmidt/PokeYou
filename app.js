@@ -31,7 +31,7 @@ $("#downkey").click(function () {
 // ========= Method to call on the AOS library for card animation=======================
 
 AOS.init({
-    duration: 3000,
+    duration: 2000,
     delay: 1000,
 });
 
@@ -108,8 +108,7 @@ $(document).ready(function () {
                 //variable that stores the url leading to the user image that was uploaded to the cloud 
                 uploadedImgLink = res.data.url;
                 //this variable holds the Face API url
-                faceURL = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=emotion&recognitionModel=recognition_01&detectionModel=detection_01"
-
+                faceURL = "https://deron.cognitiveservices.azure.com/face/v1.0/detect?returnFaceAttributes=emotion&recognitionModel=recognition_01&detectionModel=detection_01"
                 //this method is used to POST to the the Face API 
                 //this will use the FaceAPI to analyze the user image after it has been uploaded to the cloud 
                 axios({
@@ -117,7 +116,7 @@ $(document).ready(function () {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Ocp-Apim-Subscription-Key': '42bfc0fb6f98403fa3df091c5f1a4b15'
+                        'Ocp-Apim-Subscription-Key': '77c957a366ba45039501c70fa1221494'
                     },
                     data: {
                         'url': uploadedImgLink
@@ -240,11 +239,26 @@ $(document).ready(function () {
 
 $("#submitButton").on("click", function () {
 
-    $("#pokeName").text(pokemonName)
-    $("#pokeImageReal").attr("src", pokemonImage)
-    $("#pokemonType").text(pokemonType)
-    $("#pokemonAbility").text(pokemonAbility)
-    $("#pokemonMoveTwo").text(pokemonMoveTwo)
-    $("#pokemonMoveOne").text(pokemonMoveOne)
+    $("#pokeName").text(pokemonName);
+    $("#pokeImageReal").attr("src", pokemonImage);
+    $("#pokemonType").text(pokemonType);
+    $("#pokemonAbility").text(pokemonAbility);
+    $("#pokemonMoveTwo").text(pokemonMoveTwo);
+    $("#pokemonMoveOne").text(pokemonMoveOne);
 
 });
+
+//================= reset button functionality ===================
+$("#resetButton").on('click', function() {
+
+    $("#pokemonType").text("");
+    $("#pokemonAbility").text("");
+    $("#pokemonMoveOne").text("");
+    $("#pokemonMoveTwo").text("");
+    $("#pokeName").text("");
+    $("#pokeImageReal").attr("src","../Project/images/question.png");
+    $("#userImage").attr("src","../Project/images/male-profile-image-placeholder.png");
+    $("#user-image").val("");
+    $(window).scrollTop(0);
+})
+
