@@ -4,6 +4,7 @@
 
 $(document).ready(function () {
     $("#instructions").hide();
+    $("#modal").hide();
 })
 
 // onclick function for when the user clicks the image
@@ -65,6 +66,9 @@ var pokemonType;
 var pokemonAbility;
 var pokemonMoveOne;
 var pokemonMoveTwo;
+
+
+
 
 
 /*=============================================
@@ -226,9 +230,18 @@ $(document).ready(function () {
                             console.error(err3);
                         })
                     })
+                    
                     //returns a Promise and deals with rejected cases 
                     .catch(function (err2) {
                         console.error(err2);
+                        //display modal element
+                        $("#modal").show();
+
+                        //close modal when X is clicked
+                        $(".close").on("click", function() {
+                            $("#modal").hide();
+
+                        });
                     })
             })
             .catch(function (err) {
