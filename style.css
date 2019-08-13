@@ -390,8 +390,40 @@ li img {
 
    }
   
-  /* Extra large devices (large desktops, 1200px and up) */
-  /* @media (min-width: 1200px) { ... } */
+  /* =================================== Extra large devices (large desktops, 1200px and up) ========================================== */
+  @media (min-width: 1200px) {
+
+    #gameboy {
+        margin-left: 55%;
+    }
+
+    #introtext {
+        right: 19%;
+    }
+
+    #instructions {
+        width: 27%;
+        right: 35%;
+    }
+
+    #akey {
+        top: 72%;
+        right: 29%;
+    }
+
+    #bkey {
+        top: 77%;
+    }
+
+    #downkey {
+        width: 120px;
+        top: 82%;
+        right: 55%;
+    }
+
+
+
+   }
 
 
 
