@@ -56,10 +56,8 @@
             </div>
             <div class="col font" id="instructions">
                 <div id="profOak">
-                    <img src="images/Prof-Oak.png" alt="professor oak"></div>
-                <p>My name is Profressor Oak! Instruction text here blah blah blah<br>
-
-                    Press the down arrow</p>
+                    <img id="professor-oak" src="images/Prof-Oak.png" alt="professor oak"></div>
+                <p>Welcome to PokeYou, a new way to explore Pokemon tailored to you. Press the down arrow to try it out.</p>
             </div>
             <div class="col" id="akey"></div>
             <div class="col" id="bkey"></div>
@@ -73,7 +71,7 @@
     <div class="container">
         <div class="row screentwo" id="upload">
             <!-- Image input card -->
-            <div class="card col-xs-1 col-sm-1 col-md-8 col-lg-8 col-xl-12 cardOne" data-aos="flip-down"
+            <div class="card col-xs-1 col-sm-1 col-md-4 col-lg-4 col-xl-4 cardOne" data-aos="flip-down"
                 id="User-Image-Container" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Upload your photo below:</h5>
@@ -100,11 +98,11 @@
                     <h6>Upload a new image and try again. Remember image files only!</h6>
                 </div>
             </div>
-        </div>
+        
 
         <!-- Pokemon results card -->
-        <div class="row screentwo" id="results">
-            <div class="card col-xs-1 col-sm-1 col-md-8 col-lg-8 col-xl-10 cardTwo" data-aos="flip-left" id="pokecard"
+        <div class="screentwo" id="results">
+            <div class="card col-xs-1 col-sm-1 col-md-4 col-lg-4 col-xl-4 cardTwo" data-aos="flip-left" id="pokecard"
                 style="width: 18rem;">
                 <div class="card-body" id="User-Image-Container">
                     <h5 class="card-title">Pokemon card:</h5>
@@ -226,7 +224,12 @@
                             <!-- Row Two End -->
 
                         </table>
+
+                        <!-- Poke Button -->
+                        <input type="submit" value="Begin the BATTLE" id="battleButton" hidden="true">
+
                     </div>
+                </div>
                     <!-- Facebook sharing button -->
                     <!-- <div class="fb-share-button" style="padding-left: 110px"
                         data-href="https://satchelsmidt.github.io/Project" data-layout="button_count">
@@ -254,7 +257,7 @@
                 <audio id="failureMusic" src="images/Sad Trombone Sound Effect  Wah Wah Wah FAIL Sound  Fail Horns.mp3"></audio>
 
 
-                <input type="submit" value="Begin the BATTLE" id="battleButton" hidden="true">
+                <!-- <input type="submit" value="Begin the BATTLE" id="battleButton" hidden="true"> -->
 
                 <div class="row" id="battleRow" hidden="true">
 
