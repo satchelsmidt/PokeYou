@@ -276,11 +276,119 @@ li img {
 }
 
 
-  /* Medium devices (tablets, 768px and up)
-  @media (min-width: 768px) { ... }
+  /* ========================= Medium devices (tablets, 768px and up) ================================= */
+  @media (min-width: 768px) {
+
+    #gameboy {
+        margin-top: 4%;
+        margin-left: 12%;
+    }
+
+    #introtext {
+        top: 17%;
+        right: 18%;
+    }
+    
+    h1 {
+        font-size: 37px;
+    }
+    
+    p {
+        font-size: 10px;
+    }
+
+    .center-on-page {
+        top: 170%;
+        left: 47%;
+    }
+    
+    #pokeball-image {
+        width: 161px;
+    }
+
+    #instructions {
+        width: 43%;
+        top: 14%;
+        right: 27%;
+    }
+
+    #professor-oak {
+        width: 66px;
+    }
+
+    #akey {
+        height: 103px;
+        width: 93px;
+        top: 58%;
+        right: 16%;
+    }
+
+    #bkey {
+        height: 93px;
+        width: 98px;
+        top: 62%;
+        right: 29%;
+    }
+
+    #downkey {
+        height: 69px;
+        width: 120px;
+        top: 66%;
+        right: 59%;
+    }
+
+
+
+
+   }
   
-  /* Large devices (desktops, 992px and up) */
-  /* @media (min-width: 992px) { ... } */
+  /* ================================ Large devices (desktops, 992px and up) ================================*/
+  @media (min-width: 992px) {
+
+    #gameboy {
+        margin-left: 36%;
+    }
+
+    #introtext {
+        top: 20%;
+        right: 21%;
+    }
+
+    .center-on-page {
+        left: 49%;
+    }
+
+    #akey {
+        top: 75%;
+        right: 27%;
+    }
+
+    #bkey {
+        width: 91px;
+        top: 80%;
+        right: 37%;
+    }
+
+    #downkey {
+        width: 120px;
+        top: 85%;
+        right: 58%;
+    }
+
+    #instructions {
+        width: 33%;
+        top: 17%;
+        right: 34%;
+    }
+
+    #instructionText {
+        font-size: 12px;
+    }
+
+
+
+
+   }
   
   /* Extra large devices (large desktops, 1200px and up) */
   /* @media (min-width: 1200px) { ... } */
