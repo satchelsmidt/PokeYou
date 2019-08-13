@@ -46,7 +46,7 @@ $("#downkey").click(function () {
 // ========= Method to call on the AOS library for card animation=======================
 
 AOS.init({
-    duration: 3000,
+    duration: 2000,
     delay: 1000,
 });
 
@@ -281,6 +281,29 @@ $(document).ready(function () {
 });
 
 $("#submitButton").on("click", function () {
+
+    $("#pokeName").text(pokemonName);
+    $("#pokeImageReal").attr("src", pokemonImage);
+    $("#pokemonType").text(pokemonType);
+    $("#pokemonAbility").text(pokemonAbility);
+    $("#pokemonMoveTwo").text(pokemonMoveTwo);
+    $("#pokemonMoveOne").text(pokemonMoveOne);
+
+});
+
+//================= reset button functionality ===================
+$("#resetButton").on('click', function() {
+
+    $("#pokemonType").text("");
+    $("#pokemonAbility").text("");
+    $("#pokemonMoveOne").text("");
+    $("#pokemonMoveTwo").text("");
+    $("#pokeName").text("");
+    $("#pokeImageReal").attr("src","../Project/images/question.png");
+    $("#userImage").attr("src","../Project/images/male-profile-image-placeholder.png");
+    $("#user-image").val("");
+    $(window).scrollTop(0);
+})
 
     //Hide submit button (no more pressing)
     $("#submitButton").attr("hidden", true)
