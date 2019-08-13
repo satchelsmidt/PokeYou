@@ -2,6 +2,53 @@ body {
     background-image: url(images/dark-honeycomb/dark-honeycomb.png);
     margin: 0 auto;
 }
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+li{
+    padding: 20px;
+    background: #f6f6f6;
+    font-size: 20px;
+    color: #555;
+    position: relative;
+    border-bottom: 1px solid #e6e6e6;
+    height: 46px;
+    width: 220px;
+    padding-bottom: 100px;
+}
+
+li:nth-child(even){
+    padding: 20px;
+    background: #f2f2f2;
+    padding-bottom: 100px;
+}
+
+li span{
+    display: block;
+}
+
+li span:nth-child(2){
+    font-size: 16px;
+    margin-top: 6px;
+    color: #999;
+}
+
+li div{
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: rgba(255,255,255,0.6);
+    width: 40px;
+    text-align: center;
+    padding: 10px 0;
+    font-weight:  bold;
+    cursor:  pointer;
+}
+
+li img {
+    float: left;
+}
 
 .font {
     font-family: 'Press Start 2P', cursive;
