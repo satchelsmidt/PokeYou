@@ -135,6 +135,7 @@ h1 {
     border-color: gold;
     border-width: 10px;
     border-radius: 30px;
+    background: lightgoldenrodyellow;
 }
 
 #userImage {
@@ -170,6 +171,10 @@ h1 {
     padding: 15px;
 }
 
+#displayCard {
+    background: url(images/ashbackground.png);
+}
+
 #pokeName {
     text-align: center;
     text-transform: uppercase;
@@ -192,6 +197,74 @@ h1 {
     color: white;
     border-color: black;
     margin-top: 5%;
-    margin-left: 25px;
+    margin-left: 20px;
     padding: 15px;
+}
+
+#top3 {
+    margin-top: 5%;
+    margin-left: 5%;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    height: 130px;
+}
+
+.topPoke {
+    height:100px;
+    width: 100px;
+    margin-left: 45%;
+}
+
+/* =========================================SCREEN 3======================================= */
+
+#battleRow {
+    margin-top: 18%;
+    margin-bottom: 13%;
+    margin-left: 25%;
+}
+
+
+#randPokeImage {
+    height: 200px;
+    width: 200px;
+    margin-left: 65%;
+    margin-bottom: -6%;
+}
+
+#enemyHealth {
+    font-size: 27px;
+}
+#randPokeBattle {
+    margin-bottom: 5px;
+}
+
+#userPokeImage {
+    height: 200px;
+    width: 200px;
+    margin-bottom: 0%;
+}
+
+
+#userHealth {
+    font-size: 27px;
+}
+
+th {
+    font-size: 15px;
+}
+
+td {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#waitText {
+    font-size: 12px;
+}
+
+#largeButton {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top:5px;
 }

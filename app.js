@@ -83,16 +83,10 @@ const pokeList = $('#top-five');
 
 //create list elements for the top 5 pokemon list 
 function renderPokemon(doc) {
-    let li = $('<li>');
-    let pokeImg = $('<img>').attr('src', doc.data().link);
-    let name = $('<span>').text(doc.data().name);
-    let count = $('<span>').text(doc.data().count);
+    $('#num1Img').attr('src', doc.data().link);
+    $('#num1Name').text(doc.data().name);
+    $('#num1Count').text(doc.data().count);
 
-    li.append(pokeImg);
-    li.append(name);
-    li.append(count);
-
-    pokeList.append(li);
 }
 
 /*=============================================
@@ -318,12 +312,12 @@ $("#battleButton").on("click", function () {
     var userBattleTable = $("<table class='table'>")
     userBattleTable.attr("id", "userBattleTable")
 
-    var userBattleRowOne = $("<tr>")
-    var userBattleMoveTitleOne = $("<th>Move Two<th>")
-    var userBattleMoveTitleTwo = $("<th>Move One<th>")
+    // var userBattleRowOne = $("<tr>")
+    // var userBattleMoveTitleOne = $("<th>Attack One<th>")
+    // var userBattleMoveTitleTwo = $("<th>Attack Two<th>")
 
-    userBattleRowOne.append(userBattleMoveTitleOne)
-    userBattleRowOne.append(userBattleMoveTitleTwo)
+    // userBattleRowOne.append(userBattleMoveTitleOne)
+    // userBattleRowOne.append(userBattleMoveTitleTwo)
 
     var userBattleRowTwo = $("<tr>")
     var userBattleMoveOne = $("<td>" + userPokemon.pokemonMoveOne + "<td>")
@@ -333,13 +327,13 @@ $("#battleButton").on("click", function () {
     userBattleRowTwo.append(userBattleMoveTwo)
 
     var userBattleRowThree = $("<tr>")
-    var userBattleButtonOne = $("<td>" + "<input type='submit' value='Attack 1' id='userAttackOne'>" + "<td>")
-    var userBattleButtonTwo = $("<td>" + "<input type='submit' value='Attack 2' id='userAttackTwo'>" + "<td>")
+    var userBattleButtonOne = $("<td>" + "<input type='submit' value='Attack 1' class='btn btn-outline-danger' id='userAttackOne'>" + "<td>")
+    var userBattleButtonTwo = $("<td>" + "<input type='submit' value='Attack 2' class='btn btn-outline-danger'id='userAttackTwo'>" + "<td>")
 
     userBattleRowThree.append(userBattleButtonOne)
     userBattleRowThree.append(userBattleButtonTwo)
 
-    userBattleTable.append(userBattleRowOne)
+    // userBattleTable.append(userBattleRowOne)
     userBattleTable.append(userBattleRowTwo)
     userBattleTable.append(userBattleRowThree)
 
@@ -351,12 +345,12 @@ $("#battleButton").on("click", function () {
     var randBattleTable = $("<table class='table'>")
     randBattleTable.attr("id", "randBattleTable")
 
-    var randBattleRowOne = $("<tr>")
-    var randBattleMoveTitleOne = $("<th>Move Two<th>")
-    var randBattleMoveTitleTwo = $("<th>Move One<th>")
+    // var randBattleRowOne = $("<tr>")
+    // var randBattleMoveTitleOne = $("<th>Attack One<th>")
+    // var randBattleMoveTitleTwo = $("<th>Attack Two<th>")
 
-    randBattleRowOne.append(randBattleMoveTitleOne)
-    randBattleRowOne.append(randBattleMoveTitleTwo)
+    // randBattleRowOne.append(randBattleMoveTitleOne)
+    // randBattleRowOne.append(randBattleMoveTitleTwo)
 
     var randBattleRowTwo = $("<tr>")
     var randBattleMoveOne = $("<td>" + randomPokemon.pokemonMoveOne + "<td>")
@@ -365,8 +359,17 @@ $("#battleButton").on("click", function () {
     randBattleRowTwo.append(randBattleMoveOne)
     randBattleRowTwo.append(randBattleMoveTwo)
 
-    randBattleTable.append(randBattleRowOne)
+    // randBattleTable.append(randBattleRowOne)
     randBattleTable.append(randBattleRowTwo)
+
+    var randBattleRowThree = $("<tr>")
+    var randBattleButtonOne = $("<td>" + "<input type='submit' value='Attack 1' class='btn btn-secondary' id='userAttackOne' disabled>" + "<td>")
+    var randBattleButtonTwo = $("<td>" + "<input type='submit' value='Attack 2' class='btn btn-secondary'id='userAttackTwo' disabled>" + "<td>")
+
+    randBattleRowThree.append(randBattleButtonOne)
+    randBattleRowThree.append(randBattleButtonTwo)
+
+    randBattleTable.append(randBattleRowThree)
 
     $("#randPokeBattle").append($("<img src=" + randomPokemon.pokemonImage + " id='randPokeImage'>"))
     $("#randPokeBattle").append($("<h1 id='enemyHealth'>Health: " + randomPokemon.pokemonHealth + "<h1>"))
@@ -472,7 +475,7 @@ document.addEventListener("click", function (e) {
     }
 });
 
-db.collection('pokeCount').orderBy('count','desc').limit(5).onSnapshot(snapshot => {
+db.collection('pokeCount').orderBy('count','desc').limit(3).onSnapshot(snapshot => {
     let changes = snapshot.docChanges();
     changes.forEach(change => {
         if(change.type == 'added'){
