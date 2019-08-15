@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
     $("#instructions").hide();
-    $("#modal").hide();
+    $("#table-container").hide();
 })
 
 // onclick function for when the user clicks the A button
@@ -83,9 +83,21 @@ const pokeList = $('#top-five');
 
 //create list elements for the top 5 pokemon list 
 function renderPokemon(doc) {
+    // first place
     $('#num1Img').attr('src', doc.data().link);
     $('#num1Name').text(doc.data().name);
     $('#num1Count').text(doc.data().count);
+
+    // second place
+    $('#num2Img').attr('src', doc.data().link);
+    $('#num2Name').text(doc.data().name);
+    $('#num2Count').text(doc.data().count);
+
+
+    // third place
+    $('#num3Img').attr('src', doc.data().link);
+    $('#num3Name').text(doc.data().name);
+    $('#numCount').text(doc.data().count);
 
 }
 
@@ -258,13 +270,7 @@ $(document).ready(function () {
                     .catch(function (err2) {
                         console.error(err2);
                         //display modal element
-                        $("#modal").show();
-
-                        //close modal when X is clicked
-                        $(".close").on("click", function () {
-                            $("#modal").hide();
-
-                        });
+                        $("#submitButton").attr({"data-toggle":"modal", "data-target":"#myModal"});
                     })
             })
             .catch(function (err) {
@@ -277,6 +283,9 @@ $(document).ready(function () {
 $("#submitButton").on("click", function () {
     //Hide submit button (no more pressing)
     $("#submitButton").attr("hidden", true)
+
+    // show pokemon table
+    $("#table-container").show();
 
     //Generate User Pokemon Card
     $("#pokeName").text(userPokemon.pokemonName)
@@ -312,13 +321,6 @@ $("#battleButton").on("click", function () {
     var userBattleTable = $("<table class='table'>")
     userBattleTable.attr("id", "userBattleTable")
 
-    // var userBattleRowOne = $("<tr>")
-    // var userBattleMoveTitleOne = $("<th>Attack One<th>")
-    // var userBattleMoveTitleTwo = $("<th>Attack Two<th>")
-
-    // userBattleRowOne.append(userBattleMoveTitleOne)
-    // userBattleRowOne.append(userBattleMoveTitleTwo)
-
     var userBattleRowTwo = $("<tr>")
     var userBattleMoveOne = $("<td>" + userPokemon.pokemonMoveOne + "<td>")
     var userBattleMoveTwo = $("<td>" + userPokemon.pokemonMoveTwo + "<td>")
@@ -327,13 +329,13 @@ $("#battleButton").on("click", function () {
     userBattleRowTwo.append(userBattleMoveTwo)
 
     var userBattleRowThree = $("<tr>")
-    var userBattleButtonOne = $("<td>" + "<input type='submit' value='Attack 1' class='btn btn-outline-danger' id='userAttackOne'>" + "<td>")
-    var userBattleButtonTwo = $("<td>" + "<input type='submit' value='Attack 2' class='btn btn-outline-danger'id='userAttackTwo'>" + "<td>")
+    var userBattleButtonOne = $("<td>" + "<input type='submit' value='Attack 1' class='btn btn-primary' id='userAttackOne'>" + "<td>")
+    var userBattleButtonTwo = $("<td>" + "<input type='submit' value='Attack 2' class='btn btn-primary'id='userAttackTwo'>" + "<td>")
 
     userBattleRowThree.append(userBattleButtonOne)
     userBattleRowThree.append(userBattleButtonTwo)
 
-    // userBattleTable.append(userBattleRowOne)
+
     userBattleTable.append(userBattleRowTwo)
     userBattleTable.append(userBattleRowThree)
 
@@ -401,7 +403,7 @@ document.addEventListener("click", function (e) {
         //check to see if enemy dead, if dead do win things and end function
         if (randomPokemon.pokemonHealth <= 0) {
             $("#randPokeBattle").empty();
-            $("#randPokeBattle").append($("<h1>YOU WIN!!!!!!!!</h1>"));
+            $("#randPokeBattle").append($("<h1>YOU WIN!!!!!</h1>"));
             battleMusic.pause();
             victoryMusic.play();
             $("#waitText").attr('hidden', true);
@@ -415,7 +417,7 @@ document.addEventListener("click", function (e) {
         //Check to see if user dead, if dead do lose things
         if (userPokemon.pokemonHealth <= 0) {
             $("#userPokeBattle").empty();
-            $("#userPokeBattle").append($("<h1>YOU LOSE!!!!!!!!</h1>"));
+            $("#userPokeBattle").append($("<h1>YOU LOSE!!!!!</h1>"));
             battleMusic.pause();
             failureMusic.play();
             $("#waitText").attr('hidden', true);
@@ -505,6 +507,11 @@ $("#resetButton").on('click', function() {
     $("#pokemonAbility").append("<td>&nbsp</td>");
     $("#pokemonMoveOne").append("<td>&nbsp</td>");
     $("#pokemonMoveTwo").append("<td>&nbsp</td>");
+
+    // hide table and instructions and display intro text
+    $("#instructions").hide();
+    $("#introtext").show();
+    $("#table-container").hide();
 
 })
 

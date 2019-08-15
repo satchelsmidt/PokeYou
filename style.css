@@ -204,18 +204,27 @@ h1 {
 }
 
 #top3 {
-    margin-top: 5%;
+    margin-top: 10%;
     margin-left: 5%;
     border-style: solid;
     border-color: white;
     border-width: 3px;
-    height: 130px;
+    height: 170px;
+    margin-bottom: 5%;
 }
 
 .topPoke {
     height:100px;
     width: 100px;
     margin-left: 45%;
+}
+
+#num1Name {
+    margin-bottom: 3%;
+}
+
+#num1Count {
+    margin-bottom: 1%;
 }
 
 /* =========================================SCREEN 3======================================= */
