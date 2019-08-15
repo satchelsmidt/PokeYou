@@ -492,10 +492,20 @@ $("#resetButton").on('click', function() {
     $("#pokemonMoveOne").text("");
     $("#pokemonMoveTwo").text("");
     $("#pokeName").text("");
-    $("#pokeImageReal").attr("src","../Project/images/question.png");
+    $("#pokeImageReal").attr("src", "");
     $("#userImage").attr("src","../Project/images/male-profile-image-placeholder.png");
     $("#user-image").val("");
     $(window).scrollTop(0);
+
+    // referencing the id to hide the battle container
+    $("#battleRow").attr("hidden", true);
+
+    // appending the blank cells back into the table
+    $("#pokemonType").append("<td>&nbsp</td>");
+    $("#pokemonAbility").append("<td>&nbsp</td>");
+    $("#pokemonMoveOne").append("<td>&nbsp</td>");
+    $("#pokemonMoveTwo").append("<td>&nbsp</td>");
+
 })
 
 
