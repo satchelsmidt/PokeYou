@@ -513,6 +513,9 @@ $("#resetButton").on('click', function() {
     $("#introtext").show();
     $("#table-container").hide();
 
+    // unhide submit button
+    $("#submitButton").attr("hidden", false);
+
 })
 
 
