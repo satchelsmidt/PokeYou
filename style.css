@@ -1,4 +1,4 @@
-/* GLOBAL CSS */
+/* =========================================GLOBAL CSS======================================= */
 body {
     background: url(images/ashbackground.png);
     background: cover;
@@ -11,11 +11,271 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
+/* =========================================SCREEN 1======================================= */
+
 #gameboy {
     width: 100%;
     height: auto;
     border-radius: 30px;
     position: relative;
-    margin-top: 25%;
-    margin-left: 43;
+    margin-top: 3%;
+    margin-left: 35%;
+}
+
+#introtext {
+    color: black;
+    position: absolute;
+    width: 58%;
+    top: 20%;
+    right: 21%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+#instructionText {
+    font-size: 12px;
+}
+
+
+#pokeball-image {
+    width: 150px;
+    margin-right: 19px;
+}
+
+#instructions {
+    color: black;
+    position: absolute;
+    width: 25%;
+    top: 19%;
+    right: 38%;
+    text-align: center;
+}
+
+#professor-oak {
+    width: 75px;
+}
+
+#akey {
+    position: absolute;
+    height: 99px;
+    width: 102px;
+    top: 77%;
+    right: 32%;
+}
+
+#bkey {
+    position: absolute;
+    height: 99px;
+    width: 102px;
+    top: 82%;
+    right: 38%;
+}
+
+#downkey {
+    position: absolute;
+    height: 75px;
+    width: 115px;
+    top: 87%;
+    right: 59%;
+}
+
+/* --- PokeBall Animation ---- */
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .center-on-page {
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .pokeballanimate {
+    animation: shake 1.25s cubic-bezier(.36,.07,.19,.97) 3;
+  }
+  .pokeball__buttonanimate {
+    animation: blink .5s alternate 7;
+  }
+
+  @keyframes shake {
+    0 { transform: translate(0, 0) rotate(0); }
+    20% { transform: translate(-10px, 0) rotate(-20deg); }
+    30% { transform: translate(10px, 0) rotate(20deg); }
+    50% { transform: translate(-10px, 0) rotate(-10deg); }
+    60% { transform: translate(10px, 0) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
+
+/* =========================================END SCREEN 1======================================= */
+
+/* =========================================SCREEN 2======================================= */
+
+.screentwo {
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.cardOne {
+    height: 475px;
+    border-style: solid;
+    border-color: gold;
+    border-width: 10px;
+    border-radius: 30px;
+    background: lightgoldenrodyellow;
+}
+
+
+.cardTwo {
+    border-style: solid;
+    border-color: gold;
+    border-width: 10px;
+    border-radius: 30px;
+    background: lightgoldenrodyellow;
+
+}
+
+#userImage {
+    width: 200px;
+    height: 200px;
+}
+
+.card-body {
+    padding: 10px 2px 2px 2px;
+}
+
+.card-title {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#user-image {
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+
+#userImageHolder {
+    margin-left: 15%;
+}
+
+#submitButton {
+    background: black;
+    color: white;
+    border-color: black;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+
+#displayCard {
+    background: url(images/ashbackground.png);
+}
+
+#pokeName {
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: 10%;
+
+}
+
+#pokeImageReal {
+    width: 80%;
+    margin-left: 10%;
+}
+
+#table-container {
+    font-size: 10px;
+    overflow: auto;
+}
+
+#battleButton {
+    background: black;
+    color: white;
+    border-color: black;
+    margin-top: 5%;
+    margin-left: 20px;
+    padding: 15px;
+}
+
+#top3 {
+    margin-top: 10%;
+    margin-left: 5%;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    height: 170px;
+    margin-bottom: 5%;
+}
+
+.topPoke {
+    height:100px;
+    width: 100px;
+    margin-left: 45%;
+}
+
+#num1Name {
+    margin-bottom: 3%;
+}
+
+#num1Count {
+    margin-bottom: 1%;
+}
+
+/* =========================================SCREEN 3======================================= */
+
+#battleRow {
+    margin-top: 18%;
+    margin-bottom: 13%;
+    margin-left: 25%;
+}
+
+
+#randPokeImage {
+    height: 200px;
+    width: 200px;
+    margin-left: 65%;
+}
+
+#enemyHealth {
+    font-size: 27px;
+    margin-left: 40%;
+}
+#randPokeBattle {
+    margin-bottom: 5px;
+}
+
+#userPokeImage {
+    height: 200px;
+    width: 200px;
+    margin-bottom: 0%;
+}
+
+
+#userHealth {
+    font-size: 27px;
+}
+
+th {
+    font-size: 15px;
+}
+
+td {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#waitText {
+    font-size: 12px;
+}
+
+#largeButton {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top:5px;
 }
