@@ -5,6 +5,26 @@
 $(document).ready(function () {
     $("#instructions").hide();
     $("#table-container").hide();
+
+    var carCount = 1;
+
+    $('.carousel-control-next').click(function (e) { 
+        
+        
+        e.preventDefault();
+
+        if (carCount == 4){
+            carCount = 0;
+            $('.active').removeClass('active');
+            $('#poke'+carCount).addClass('active');
+            carCount+=1;
+        }
+        else{
+            $('.active').removeClass('active');
+            $('#poke'+carCount).addClass('active');
+            carCount+=1;
+        }         
+    });
 })
 
 // onclick function for when the user clicks the A button
@@ -82,22 +102,22 @@ var randomPokemon;
 const pokeList = $('#top-five');
 
 //create list elements for the top 5 pokemon list 
-function renderPokemon(doc) {
+function renderPokemon(doc, num) {
     // first place
-    $('#num1Img').attr('src', doc.data().link);
-    $('#num1Name').text(doc.data().name);
-    $('#num1Count').text(doc.data().count);
+    $('#num' + num + 'Img').attr('src', doc.data().link);
+    $('#num' + num + 'Name').text(doc.data().name);
+    $('#num' + num + 'Count').text(doc.data().count);
 
-    // second place
-    $('#num2Img').attr('src', doc.data().link);
-    $('#num2Name').text(doc.data().name);
-    $('#num2Count').text(doc.data().count);
+    // // second place
+    // $('#num2Img').attr('src', doc.data().link);
+    // $('#num2Name').text(doc.data().name);
+    // $('#num2Count').text(doc.data().count);
 
 
-    // third place
-    $('#num3Img').attr('src', doc.data().link);
-    $('#num3Name').text(doc.data().name);
-    $('#numCount').text(doc.data().count);
+    // // third place
+    // $('#num3Img').attr('src', doc.data().link);
+    // $('#num3Name').text(doc.data().name);
+    // $('#numCount').text(doc.data().count);
 
 }
 
@@ -477,11 +497,16 @@ document.addEventListener("click", function (e) {
     }
 });
 
+//TOP 3 pokemon FIREBASE listener 
 db.collection('pokeCount').orderBy('count','desc').limit(3).onSnapshot(snapshot => {
     let changes = snapshot.docChanges();
+    let num = 1;
     changes.forEach(change => {
         if(change.type == 'added'){
-            renderPokemon(change.doc);
+            console.log(change.doc.data());
+            renderPokemon(change.doc,num);
+            num+=1;
+            // renderPokemon(change.doc);
         }
     })
 });

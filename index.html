@@ -69,7 +69,7 @@
     <div class="container">
 
         <!-- BEGINNING OF INPUT AND POKEMON ROW -->
-        <div class="row screentwo" >
+        <div class="row screentwo">
 
             <!-- IMAGE INPUT CARD -->
             <div class="card col-4 cardOne font" id="User-Image-Container">
@@ -80,7 +80,7 @@
                         <img id="userImage" src="../Project/images/male-profile-image-placeholder.png"
                             alt="placeholder user image">
                     </div>
-                    
+
                 </div>
 
                 <!-- Adding the image submit button -->
@@ -95,37 +95,37 @@
 
             <!-- empty div -->
             <div class="col-3">
-                    <p></p>
-                </div>
+                <p></p>
+            </div>
 
             <!-- Error card when the Face API fails -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Team Rocket strikes again!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Team Rocket strikes again!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/teamrocket.jpg" id="teamRocket">
+                            <h6>Upload a new image and try again. Remember image files only!</h6>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <img src="images/teamrocket.jpg" id="teamRocket">
-                        <h6>Upload a new image and try again. Remember image files only!</h6>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
                 </div>
             </div>
-            
+
             <!-- END OF ERROR CARD -->
 
             <!-- Pokemon results card -->
             <div class="card col-4 cardTwo font" id="results displayCard">
 
                 <div class="card-body">
-                    
+
                     <!-- Display Poke Name -->
                     <h4 id="pokeName"></h4>
 
@@ -135,7 +135,7 @@
                     <!-- Stats display -->
                     <div id="table-container">
                         <table style="width:100%">
-                            
+
                             <!-- Row One Begin -->
                             <tr id="userRowOne">
                                 <td class="roundy" colspan="2" style="background: #FFFFFF;">
@@ -249,60 +249,59 @@
                         </table>
 
                         <!-- Poke Button -->
-                        <input type="submit" value="Begin the BATTLE" class="btn btn-primary btn-sm" id="battleButton" hidden="true">
+                        <input type="submit" value="Begin the BATTLE" class="btn btn-primary btn-sm" id="battleButton"
+                            hidden="true">
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-       
-    
 
 
-    <!-- END OF INPUT AND POKEMON ROW -->
 
-    <!------- Top 5 pokemon carousel ------->
+
+        <!-- END OF INPUT AND POKEMON ROW -->
+
+        <!------- Top 5 pokemon carousel ------->
         <div class="row" id="top3">
             <div class="col bd-example" id="">
-                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
 
-                            <!-- title slide -->
-                            <div class="carousel-item active">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Top 3 Pokemon!</h5>
-                                </div>
+                        <!-- title slide -->
+                        <div class="carousel-item active" id='poke0'>
+                            <div class="carousel-caption d-none d-md-block topPoke">
+                                <h5>Top 3 Pokemon!</h5>
                             </div>
+                        </div>
 
-                            <!-- first place pokemon -->
-                            <div class="carousel-item">
-                                <img src="" class="d-block topPoke" id="num1Img" alt="number 1 pokemon">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 id="num1Name"></h5>
-                                    <p id="num1Count"></p>
-                                </div>
+                        <!-- first place pokemon -->
+                        <div class="carousel-item" id='poke1'>
+                            <img src="" class="d-block topPoke" id="num1Img" alt="number 1 pokemon">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 id="num1Name"></h5>
+                                <p id="num1Count"></p>
                             </div>
+                        </div>
 
-                            <!-- second place pokemon -->
-                            <div class="carousel-item">
-                                <img src="" class="d-block topPoke" id="num2Img" alt="number 2 pokemon">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 id="num2Name"></h5>
-                                    <p id="num2Count"></p>
-                                </div>
+                        <!-- second place pokemon -->
+                        <div class="carousel-item" id='poke2'>
+                            <img src="" class="d-block topPoke" id="num2Img" alt="number 2 pokemon">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 id="num2Name"></h5>
+                                <p id="num2Count"></p>
                             </div>
+                        </div>
 
-                            <!-- third place pokemon -->
-                            <div class="carousel-item">
-                                <img src="" class="d-block topPoke" id="num3Img" alt="number 3 pokemon">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 id="num3Name"></h5>
-                                    <p id="num3Count"></p>
-                                </div>
+                        <!-- third place pokemon -->
+                        <div class="carousel-item" id='poke3'>
+                            <img src="" class="d-block topPoke" id="num3Img" alt="number 3 pokemon">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 id="num3Name"></h5>
+                                <p id="num3Count"></p>
                             </div>
                         </div>
                     </div>
-
                     <!-- carousel buttons -->
                     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -312,11 +311,14 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                    </div>
                 </div>
+
+
             </div>
         </div>
-    
+    </div>
+    </div>
+
 
     <!------------------------------------BATTLE ZONE------------------------------------------>
 
@@ -334,11 +336,12 @@
 
             <div class="card col-8" id="randPokeBattle"></div>
             <div class="card col-8" id="userPokeBattle"></div>
-            
+
             <!---------------- Reset button ---------------->
             <div class="button col-8" id="largeButton">
                 <div id="Reset-Button-Container">
-                    <input type="reset" class="btn btn-danger btn-lg btn-block" id="resetButton" value="Restart Game"></input>
+                    <input type="reset" class="btn btn-danger btn-lg btn-block" id="resetButton"
+                        value="Restart Game"></input>
                 </div>
             </div>
         </div>
@@ -348,11 +351,11 @@
 
     <!-----------------------------------------END BATTLE ZONE ------------------------------------------->
 
-    
-    
 
 
-    
+
+
+
 
     <!-- OTHER SHIT -->
 
@@ -415,3 +418,5 @@
 </body>
 
 </html>
+
+
