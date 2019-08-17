@@ -227,6 +227,13 @@ h1 {
     margin-bottom: 1%;
 }
 
+.carousel-caption {
+    position: static;
+}
+/* .carousel-item {
+    display: inherit;
+}  */
+
 /* =========================================SCREEN 3======================================= */
 
 #battleRow {
