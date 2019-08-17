@@ -20,6 +20,7 @@ body {
     position: relative;
     margin-top: 3%;
     margin-left: 35%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #introtext {
@@ -128,6 +129,7 @@ h1 {
     border-width: 10px;
     border-radius: 30px;
     background: lightgoldenrodyellow;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
@@ -137,6 +139,7 @@ h1 {
     border-width: 10px;
     border-radius: 30px;
     background: lightgoldenrodyellow;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
@@ -206,33 +209,82 @@ h1 {
 #top3 {
     margin-top: 10%;
     margin-left: 5%;
-    border-style: solid;
-    border-color: white;
-    border-width: 3px;
     height: 170px;
     margin-bottom: 5%;
+    background: hsla(0, 0%, 0%, 0.5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.topPoke {
-    height:100px;
-    width: 100px;
-    margin-left: 45%;
+#poke0 {
+    margin-top: 14%;
 }
 
-#num1Name {
-    margin-bottom: 3%;
+#carouselTitle {
+    font-size: 30px;
+    color: whitesmoke;
+    opacity: 1;
 }
 
-#num1Count {
-    margin-bottom: 1%;
+.active {
+    margin-top: 5%;
 }
 
-.carousel-caption {
-    position: static;
+.d-block {
+    margin-left: 30%;
 }
-/* .carousel-item {
-    display: inherit;
-}  */
+
+#teamRocket {
+    height: 200px;
+    width: 200px;
+    margin-left: 40%;
+}
+
+/* The Modal (background) */
+#modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    margin-left: 7%;
+    top: 0;
+    width: 80%; /* Full width */
+    height: 100%; /* Full height */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    position: relative;
+    text-align: center;
+  }
+
+  h1 {
+      margin-top: 5%;
+      font-size: 22px;
+  }
+
+  h6 {
+      font-size: 12px;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 95%;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
 
 /* =========================================SCREEN 3======================================= */
 
@@ -285,4 +337,5 @@ td {
     padding-left: 0px;
     padding-right: 0px;
     margin-top:5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

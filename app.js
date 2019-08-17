@@ -290,7 +290,13 @@ $(document).ready(function () {
                     .catch(function (err2) {
                         console.error(err2);
                         //display modal element
-                        $("#submitButton").attr({"data-toggle":"modal", "data-target":"#myModal"});
+                        $("#modal").show();
+
+                        //close modal when X is clicked
+                        $(".close").on("click", function() {
+                            $("#modal").hide();
+
+                        });
                     })
             })
             .catch(function (err) {
