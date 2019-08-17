@@ -98,28 +98,7 @@
                 <p></p>
             </div>
 
-            <!-- Error card when the Face API fails -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Team Rocket strikes again!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="images/teamrocket.jpg" id="teamRocket">
-                            <h6>Upload a new image and try again. Remember image files only!</h6>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- END OF ERROR CARD -->
+             
 
             <!-- Pokemon results card -->
             <div class="card col-4 cardTwo font" id="results displayCard">
@@ -262,32 +241,45 @@
 
         <!-- END OF INPUT AND POKEMON ROW -->
 
-        <!------- Top 5 pokemon carousel ------->
+        <!-- Error card when the Face API fails -->
+        <div id="modal">
+                <div class="modal-content font">
+                    <span class="close">&times;</span>
+                    <img src="images/teamrocket.jpg" id="teamRocket">
+                    <h1>Team Rocket strikes again!</h1>
+                    <h6>Upload a new image and try again. Remember image files only!</h6>
+                </div>
+            </div>
+
+        <!-- END OF ERROR CARD -->
+
+        <!------- Top 3 pokemon carousel ------->
         <div class="row" id="top3">
             <div class="col bd-example" id="">
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleCaptions" class="carousel slide font" data-ride="carousel">
                     <div class="carousel-inner">
 
                         <!-- title slide -->
                         <div class="carousel-item active" id='poke0'>
-                            <div class="carousel-caption d-none d-md-block topPoke">
-                                <h5>Top 3 Pokemon!</h5>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 id="carouselTitle">Top 3 Pokemon!</h5>
                             </div>
                         </div>
 
                         <!-- first place pokemon -->
                         <div class="carousel-item" id='poke1'>
-                            <img src="" class="d-block topPoke" id="num1Img" alt="number 1 pokemon">
-                            <div class="carousel-caption d-none d-md-block">
+                            <img src="" class="d-block" id="num1Img" alt="number 1 pokemon">
+                            <div class="carousel-caption d-none d-md-block topPoke">
                                 <h5 id="num1Name"></h5>
                                 <p id="num1Count"></p>
                             </div>
+                            
                         </div>
 
                         <!-- second place pokemon -->
                         <div class="carousel-item" id='poke2'>
-                            <img src="" class="d-block topPoke" id="num2Img" alt="number 2 pokemon">
-                            <div class="carousel-caption d-none d-md-block">
+                            <img src="" class="d-block" id="num2Img" alt="number 2 pokemon">
+                            <div class="carousel-caption d-none d-md-block topPoke">
                                 <h5 id="num2Name"></h5>
                                 <p id="num2Count"></p>
                             </div>
@@ -295,8 +287,8 @@
 
                         <!-- third place pokemon -->
                         <div class="carousel-item" id='poke3'>
-                            <img src="" class="d-block topPoke" id="num3Img" alt="number 3 pokemon">
-                            <div class="carousel-caption d-none d-md-block">
+                            <img src="" class="d-block" id="num3Img" alt="number 3 pokemon">
+                            <div class="carousel-caption d-none d-md-block topPoke">
                                 <h5 id="num3Name"></h5>
                                 <p id="num3Count"></p>
                             </div>
